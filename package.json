@@ -10,6 +10,8 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "jotai": "^2.15.1",
+    "kaplay": "^4000.0.0-alpha.10",
     "react": "^19.2.0",
     "react-dom": "^19.2.0",
     "react-router": "^7.9.6"
