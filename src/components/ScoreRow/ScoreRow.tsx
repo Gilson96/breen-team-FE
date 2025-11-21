@@ -1,17 +1,12 @@
 import './ScoreRow.css';
-import type { ScoreRowTypes } from '../../utils/dataTypes';
+import type { Score } from '../../utils/dataTypes';
 
-const ScoreRow = () => {
-  const scoreRow: ScoreRowTypes[] = [];
+const ScoreRow = ({ score, username }: Score) => {
   return (
-    <div className='scoreRow'>
-      {scoreRow.map(score => (
-        <li>
-          <p>{score.username}</p>
-          <p>{score.score}</p>
-        </li>
-      ))}
-    </div>
+    <li className='scoreRow'>
+      <p className='scoreRow__username'>{username}</p>
+      <p className='scoreRow__score'>{score}</p>
+    </li>
   );
 };
 
