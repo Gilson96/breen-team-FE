@@ -8,9 +8,9 @@ export default function initKaplay() {
     global: false,
     debug: true, // TODO: put back to false in prod
     debugKey: 'f1',
-    canvas: document.getElementById('game'),
+    canvas: document.getElementById('game') as HTMLCanvasElement,
     pixelDensity: devicePixelRatio,
     crisp: true,
-    maxFPS: 60,
+    maxFPS: 60
   });
 }

@@ -1,3 +1,4 @@
+
 import { Routes, Route } from "react-router";
 import Home from "./Home/home";
 import Leaderboard from "./Leaderboard/leaderboard";
