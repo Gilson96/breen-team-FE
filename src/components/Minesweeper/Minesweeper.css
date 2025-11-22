@@ -14,7 +14,7 @@
   }
   .minesweeper__container {
     display: grid;
-    grid-template-columns: repeat(10, 1fr);
+    grid-template-columns: repeat(15, 1fr);
     gap: 0.25rem;
   }
 }

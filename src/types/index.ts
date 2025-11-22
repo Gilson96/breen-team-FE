@@ -7,5 +7,5 @@ export type Score = {
 export type MinesweeperCellData = {
   x: number;
   y: number;
-  hidden: boolean;
+  show: boolean;
 };

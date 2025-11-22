@@ -1,14 +1,14 @@
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import MinesweeperCell from '../MinesweeperCell/MinesweeperCell';
 import type { MinesweeperCellData } from '../../types';
 import './Minesweeper.css';
 
 const createGrid = () => {
-  const grid = new Array(10).fill(new Array(10).fill(null));
+  const grid = new Array(15).fill(new Array(20).fill(null));
 
   const initialisedGrid = grid.map((row, i) => {
     return row.map((_cell: null, j: number) => {
-      return { x: j, y: i, hidden: true };
+      return { x: j, y: i, show: false };
     });
   });
 
@@ -17,11 +17,15 @@ const createGrid = () => {
 
 const Minesweeper = () => {
   const [grid, setGrid] = useState<MinesweeperCellData[][]>(createGrid());
-  const [timer, setTimer] = useState(0);
-  const [flags, setFlags] = useState(99);
+  // const [timer, setTimer] = useState(0);
+  // const [flags, setFlags] = useState(99);
 
   const handleClick = (x: number, y: number) => {
-    console.log(x, y);
+    setGrid(grid => {
+      return grid.map(row => {
+        return row.map(cell => (cell.x === x && cell.y === y ? { ...cell, show: true } : cell));
+      });
+    });
   };
 
   return (
