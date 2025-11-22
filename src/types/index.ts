@@ -3,3 +3,9 @@ export type Score = {
   username: string;
   score: number;
 };
+
+export type MinesweeperCellData = {
+  x: number;
+  y: number;
+  hidden: boolean;
+};

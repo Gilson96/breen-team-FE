@@ -1,11 +1,17 @@
-import './MInesweeperCell.css';
+import type { MinesweeperCellData } from '../../types';
+import './MinesweeperCell.css';
 
 type MinesweeperCellProps = {
-  value: null | 'X';
+  cell: MinesweeperCellData;
 };
 
-const MinesweeperCell = ({ value }: MinesweeperCellProps) => {
-  return <div className='minesweeperCell'>{value}</div>;
+const MinesweeperCell = ({ cell }: MinesweeperCellProps) => {
+  return (
+    <div className='minesweeperCell'>
+      {cell.x}
+      {cell.y}
+    </div>
+  );
 };
 
 export default MinesweeperCell;
