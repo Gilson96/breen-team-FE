@@ -5,11 +5,11 @@ export type Score = {
 };
 
 export type MinesweeperCellData = {
+  id: number;
   x: number;
   y: number;
   show: boolean;
   bug: boolean;
-  clear: boolean;
-  proximity: boolean;
+  proximity: number;
   flag: boolean;
 };

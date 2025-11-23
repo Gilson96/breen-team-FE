@@ -11,14 +11,15 @@ type MinesweeperCellProps = {
 };
 
 const MinesweeperCell = ({
-  cell: { x, y, show, bug, flag },
+  cell: { x, y, show, bug, flag, proximity },
   leftClickHandler,
   rightClickHandler,
   ...rest
 }: MinesweeperCellProps) => {
   const cellClasses = classNames({
     minesweeperCell: true,
-    show
+    show,
+    bug
   });
   return (
     <div
@@ -27,8 +28,9 @@ const MinesweeperCell = ({
       onContextMenu={e => rightClickHandler(e, x, y)}
       {...rest}
     >
-      {flag && <IoFlag />}
-      {bug && <IoBugSharp />}
+      {bug && <IoBugSharp className='bug' />}
+      {proximity > 0 && <span className={`proximity${proximity}`}>{proximity}</span>}
+      {flag && <IoFlag className='flag' />}
     </div>
   );
 };
