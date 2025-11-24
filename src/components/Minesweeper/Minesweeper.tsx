@@ -6,7 +6,7 @@ import { calculateBugs, createGrid, revealBugs, revealGridRecursively } from './
 import type { MinesweeperCellData } from '../../types';
 import './Minesweeper.css';
 
-const gridDimensions: [number, number] = [10, 15];
+const gridDimensions: [number, number] = [20, 30];
 
 const Minesweeper = () => {
   const [dimensions, setDimensions] = useState<[number, number]>(gridDimensions);
@@ -17,6 +17,7 @@ const Minesweeper = () => {
   const [flags, setFlags] = useState(calculateBugs(...gridDimensions));
 
   useEffect(() => {
+    //TODO: Make accurate and efficient
     setInterval(() => {
       setTime(currentTime => currentTime + 1);
     }, 1000);
