@@ -11,7 +11,7 @@ const Game = () => {
 
   return (
     <div className='game'>
-      <canvas ref={gameRef} className='game'></canvas>
+      <canvas ref={gameRef}></canvas>
     </div>
   );
 };
