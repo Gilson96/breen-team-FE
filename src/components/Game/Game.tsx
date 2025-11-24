@@ -9,7 +9,11 @@ const Game = () => {
     initGame(gameRef);
   }, []);
 
-  return <canvas ref={gameRef} className='game'></canvas>;
+  return (
+    <div className='game'>
+      <canvas ref={gameRef}></canvas>;
+    </div>
+  );
 };
 
 export default Game;
