@@ -7,7 +7,7 @@ import { calculateBugs, createGrid, revealBugs, revealGridRecursively } from './
 import type { MinesweeperCellData } from '../../types';
 import './Debugger.css';
 
-const gridDimensions: [number, number] = [20, 30];
+const gridDimensions: [number, number] = [9, 9];
 
 const Minesweeper = () => {
   const [dimensions, setDimensions] = useState<[number, number]>(gridDimensions);
@@ -16,11 +16,11 @@ const Minesweeper = () => {
   const [startTime, setStartTime] = useState(0);
   const [timerRunning, setTimerRunning] = useState(false);
   const [gameOver, setGameOver] = useState(false);
+  const [complete, setComplete] = useState(false);
   const [flags, setFlags] = useState(calculateBugs(...gridDimensions));
 
   useInterval(
     () => {
-      console.log(startTime);
       setTime(Math.round((Date.now() - startTime) / 1000));
     },
     timerRunning ? 200 : null
@@ -36,16 +36,32 @@ const Minesweeper = () => {
   };
 
   const handleLeftClick = (x: number, y: number) => {
+    if (complete) return;
     if (!timerRunning) startTimer();
 
     if (grid[y][x].bug) {
       setGameOver(true);
       stopTimer();
-      const updated = revealBugs(grid);
-      setGrid(updated);
+      setGrid(revealBugs(grid));
     } else {
-      const updated = revealGridRecursively(x, y, grid);
-      setGrid(updated);
+      const newGrid = revealGridRecursively(x, y, grid);
+
+      setGrid(newGrid);
+
+      const gridComplete = newGrid.reduce((acc, row) => {
+        const rowComplete = row.reduce((acc, cell) => {
+          if (!cell.bug && !cell.show) acc = false;
+          return acc;
+        }, true);
+
+        if (!rowComplete) acc = false;
+        return acc;
+      }, true);
+
+      if (gridComplete) {
+        setComplete(gridComplete);
+        stopTimer();
+      }
     }
   };
 
@@ -79,6 +95,7 @@ const Minesweeper = () => {
         </span>
       </div>
       {gameOver && <h3>You lose!</h3>}
+      {complete && <h3>You win!</h3>}
       <div
         className='minesweeper__container'
         style={{ gridTemplateColumns: `repeat(${dimensions[0]}, 1fr)` }}
