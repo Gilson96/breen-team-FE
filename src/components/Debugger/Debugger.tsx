@@ -4,7 +4,7 @@ import { FaClock } from 'react-icons/fa6';
 import MinesweeperCell from '../MinesweeperCell/MinesweeperCell';
 import { calculateBugs, createGrid, revealBugs, revealGridRecursively } from './functions';
 import type { MinesweeperCellData } from '../../types';
-import './Minesweeper.css';
+import './Debugger.css';
 
 const gridDimensions: [number, number] = [20, 30];
 
