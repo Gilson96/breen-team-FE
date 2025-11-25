@@ -2,7 +2,9 @@ import { useState, type SyntheticEvent } from 'react';
 import { useInterval } from 'usehooks-ts';
 import { IoFlag } from 'react-icons/io5';
 import { FaClock } from 'react-icons/fa6';
+import ScoreSubmit from '../ScoreSubmit/ScoreSubmit';
 import MinesweeperCell from '../MinesweeperCell/MinesweeperCell';
+import Button from '../Button/Button';
 import { calculateBugs, createGrid, revealBugs, revealGridRecursively } from './functions';
 import type { MinesweeperCellData } from '../../types';
 import './Debugger.css';
@@ -18,6 +20,7 @@ const Minesweeper = () => {
   const [gameOver, setGameOver] = useState(false);
   const [complete, setComplete] = useState(false);
   const [flags, setFlags] = useState(calculateBugs(...gridDimensions));
+  const [showModal, setShowModal] = useState(false);
 
   useInterval(
     () => {
@@ -83,6 +86,10 @@ const Minesweeper = () => {
 
   return (
     <main className='minesweeper'>
+      <Button onClick={() => setShowModal(true)}>Show Modal</Button>
+      {showModal && (
+        <ScoreSubmit onClose={() => setShowModal(false)}>Submit your score!</ScoreSubmit>
+      )}
       <h1 className='minesweeper__title'>Debugger</h1>
       <div className='minesweeper__details'>
         <span>
