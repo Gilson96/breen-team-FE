@@ -1,7 +1,17 @@
+import type { ReactNode } from 'react';
 import './Loading.css';
 
-const Loading = () => {
-  return <h1>Loading works!</h1>;
+type LoadingProps = {
+  children: ReactNode;
+};
+
+const Loading = ({ children }: LoadingProps) => {
+  return (
+    <div className='loading'>
+      <span className='loader'></span>
+      {children}
+    </div>
+  );
 };
 
 export default Loading;
