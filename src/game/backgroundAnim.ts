@@ -1,5 +1,5 @@
 import type { KAPLAYCtx } from 'kaplay';
-import { spawnBackground } from './spawnBackground';
+import { spawnBackground } from './spawnObjects/spawnBackground';
 
 export function backgroundAnim(k: KAPLAYCtx) {
   const [firstTile, secondTile] = spawnBackground(k);
