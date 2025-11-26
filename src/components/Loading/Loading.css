@@ -31,6 +31,8 @@
     height: 2rem;
     border: 4px solid var(--snow-storm-dark);
     box-sizing: border-box;
+    box-shadow: 5px 5px 0 rgba(0, 0, 0, 1);
+    background-color: var(--polar-night-mid);
 
     .loader__bar {
       animation: loading 2s ease-out infinite;
