@@ -8,7 +8,9 @@ type LoadingProps = {
 const Loading = ({ children }: LoadingProps) => {
   return (
     <div className='loading'>
-      <span className='loader'></span>
+      <span className='loader'>
+        <div className='loader__bar'></div>
+      </span>
       {children}
     </div>
   );

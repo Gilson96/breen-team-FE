@@ -7,6 +7,7 @@ import Nav from '../Nav/Nav';
 import Modal from '../Modal/Modal';
 import MinesweeperCell from '../DebuggerCell/DebuggerCell';
 import Button from '../Button/Button';
+import Loading from '../Loading/Loading';
 import { calculateBugs, createGrid, revealBugs, revealGridRecursively } from './functions';
 import type { DebuggerCellData } from '../../types';
 import './Debugger.css';
@@ -143,6 +144,7 @@ const Minesweeper = () => {
           {time}
         </span>
       </div>
+      <Loading>Loading scores</Loading>
       <div
         className='minesweeper__container'
         style={{ gridTemplateColumns: `repeat(${dimensions[0]}, 1fr)` }}
