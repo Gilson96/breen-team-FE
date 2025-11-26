@@ -8,5 +8,6 @@
     border: none;
     padding: 0.5rem 1rem;
     box-shadow: var(--block-shadow);
+    outline: none;
   }
 }
