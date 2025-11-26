@@ -1,5 +1,5 @@
 import type { KAPLAYCtx } from 'kaplay';
-import { spawnFloor } from './spawnFloor';
+import { spawnFloor } from './spawnObjects/spawnFloor';
 
 export function floorAnim(k: KAPLAYCtx) {
   const [firstTile, secondTile] = spawnFloor(k);
