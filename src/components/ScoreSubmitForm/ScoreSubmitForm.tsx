@@ -1,7 +1,14 @@
+import Button from '../Button/Button';
 import './ScoreSubmitForm.css';
 
 const ScoreSubmitForm = () => {
-  return <h1>Score Submit Form works!</h1>;
+  return (
+    <form id='scoreSubmit' action=''>
+      <label htmlFor='username'>Enter your name</label>
+      <input type='text' name='username' id='username' maxLength={3} />
+      <Button>Submit Score</Button>
+    </form>
+  );
 };
 
 export default ScoreSubmitForm;
