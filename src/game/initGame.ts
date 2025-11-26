@@ -23,7 +23,10 @@ import { spawnBackgroundObjects } from './spawnBackgroundObjects.ts';
 import { spawnTorch } from './spawnTorches.ts';
 import { spawnMainMenuImage } from './mainMenuImage.ts';
 
-export default function initGame(gameRef: RefObject<HTMLCanvasElement | undefined>): void {
+export default function initGame(
+  gameRef: RefObject<HTMLCanvasElement>,
+  setScore: (score: number) => void
+): () => void {
   const k = initKaplay(gameRef);
 
   loadSprites(k);
@@ -115,14 +118,24 @@ export default function initGame(gameRef: RefObject<HTMLCanvasElement | undefine
     ]);
 
     scoreFrame.add([
+
       k.text(`FINAL SCORE: ${score}`, { size: 20 }),
       k.scale(1),
       k.anchor('center'),
       k.color(255, 153, 0)
+
     ]);
+
+    setScore(score);
 
     addButton(k, 'Main Menu', k.vec2(k.width() / 2, 400), 'mainMenu');
   });
 
+
   k.go('mainMenu');
+
+  k.go('game');
+
+  return k.quit;
+
 }
