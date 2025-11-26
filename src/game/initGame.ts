@@ -20,6 +20,7 @@ import { spawnKnives } from './spawnKnives.ts';
 import { floorAnim } from './floorAnim';
 import { backgroundAnim } from './backgroundAnim.ts';
 import { spawnBackgroundObjects } from './spawnBackgroundObjects.ts';
+import { spawnTorch } from './spawnTorches.ts';
 
 export default function initGame(gameRef: RefObject<HTMLCanvasElement | undefined>): void {
   const k = initKaplay(gameRef);
@@ -49,10 +50,11 @@ export default function initGame(gameRef: RefObject<HTMLCanvasElement | undefine
     addButton(k, 'Game Over', k.vec2(200, 200), 'gameOver');
 
     backgroundAnim(k);
-
-    k.setBackground(100, 10, 102);
-    spawnBackgroundObjects(k);
+    k.setBackground(0, 0, 0);
     const player = spawnPlayer(k);
+
+    spawnTorch(k);
+    spawnBackgroundObjects(k);
     floorColision(k);
     floorAnim(k);
     spawnObstacles(k);
