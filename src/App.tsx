@@ -1,4 +1,5 @@
 import { Routes, Route } from 'react-router';
+import SquaresContainer from './pages/SquaresContainer';
 import HomePage from './pages/HomePage';
 import LeaderboardPage from './pages/LeaderboardPage';
 import GamesPage from './pages/GamesPage';
@@ -9,9 +10,11 @@ import './App.css';
 const App = () => {
   return (
     <Routes>
-      <Route path='/' element={<HomePage />} />
-      <Route path='/leaderboards' element={<LeaderboardPage />} />
-      <Route path='/games' element={<GamesPage />} />
+      <Route element={<SquaresContainer />}>
+        <Route path='/' element={<HomePage />} />
+        <Route path='/leaderboards' element={<LeaderboardPage />} />
+        <Route path='/games' element={<GamesPage />} />
+      </Route>
       <Route path='/debugger' element={<Debugger />} />
       <Route path='/orcoftherings' element={<Runner />} />
     </Routes>
