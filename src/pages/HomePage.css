@@ -6,4 +6,13 @@
   align-items: center;
   justify-content: center;
   gap: 2rem;
+
+  h1 {
+    font-size: 7rem;
+    line-height: 7rem;
+    text-align: center;
+    color: var(--aurora-yellow);
+    text-shadow: var(--block-shadow);
+    text-transform: uppercase;
+  }
 }

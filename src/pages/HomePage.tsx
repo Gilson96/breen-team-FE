@@ -4,6 +4,7 @@ import './HomePage.css';
 const HomePage = () => {
   return (
     <main className='homePage'>
+      <h1>Burnout Breakers</h1>
       <HomeButton to='/games' animate>
         View Games
       </HomeButton>
