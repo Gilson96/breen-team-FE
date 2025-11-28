@@ -16,3 +16,14 @@ export type DebuggerCellData = {
   proximity: number;
   flag: boolean;
 };
+
+export type CardProps = {
+  id?: number
+  src?: string
+  cardBack?: string
+  card?: CardProps;
+  matched?: boolean
+  flipped?: boolean
+  disabled?: boolean
+  handleFlip?: (card: CardProps) => void;
+}

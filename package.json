@@ -11,6 +11,7 @@
   },
   "dependencies": {
     "@tanstack/react-query": "^4.42.0",
+    "array-shuffle": "^4.0.0",
     "classnames": "^2.5.1",
     "jotai": "^2.15.1",
     "kaplay": "^4000.0.0-alpha.10",
