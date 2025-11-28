@@ -1,0 +1,54 @@
+import type { KaboomCtx } from 'kaboom';
+
+export function loadSprites(k: KaboomCtx) {
+  k.loadFont('font', './PixelifySans.ttf');
+
+  k.loadSprite('floorSprite', './floor.png');
+  k.loadSprite('background', './background.png');
+  k.loadSprite('backgroundObject', './cage.png');
+  k.loadSprite('groundObstacle', './bigRock.png');
+  k.loadSprite('topObstacle', './stalactite.png');
+  k.loadSprite('mainMenuImage', './mainMenuImage.png');
+  k.loadSprite('buttonImage', './buttonImage.png');
+  k.loadSprite('labelImage', './labelImage.png');
+  k.loadSprite('gameOverImage', './gameOverImage.png');
+
+  k.loadSprite('torch', './torch.png', {
+    sliceX: 4,
+    sliceY: 1,
+    anims: {
+      run: {
+        from: 0,
+        to: 3,
+        speed: 4,
+        loop: true
+      }
+    }
+  });
+
+  k.loadSprite('player', './orc.png', {
+    sliceX: 4,
+    sliceY: 1,
+    anims: {
+      run: {
+        from: 0,
+        to: 3,
+        speed: 10,
+        loop: true
+      }
+    }
+  });
+
+  k.loadSprite('knife', './knives.png', {
+    sliceX: 2,
+    sliceY: 1,
+    anims: {
+      run: {
+        from: 0,
+        to: 1,
+        speed: 4,
+        loop: true
+      }
+    }
+  });
+}
