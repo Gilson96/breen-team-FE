@@ -8,6 +8,7 @@ const GamesPage = () => {
       <h1 className='games__title'>Games</h1>
       <HomeButton to='/orcoftherings'>Orc of the Rings</HomeButton>
       <HomeButton to='/debugger'>Debugger</HomeButton>
+      <HomeButton to='/memoryheap'>Memory Heap</HomeButton>
       <Nav />
     </main>
   );

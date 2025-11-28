@@ -5,7 +5,7 @@ import { arrayShuffle } from 'array-shuffle';
 import Card from './Card';
 import cardBack from '../../../public/memoryGame/back_card.png';
 
-const Game = () => {
+const MemoryHeap = () => {
   const [deck, setDeck] = useState<CardProps[]>(cards);
   const [restartGame, setRestartGame] = useState(false);
   const [firstFlip, setFirstFlip] = useState<CardProps | null>(null);
@@ -78,4 +78,4 @@ const Game = () => {
   );
 };
 
-export default Game;
+export default MemoryHeap;

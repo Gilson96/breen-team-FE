@@ -6,6 +6,7 @@ import GamesPage from './pages/GamesPage';
 import Debugger from './components/Debugger/Debugger';
 import Runner from './components/Runner/Runner';
 import './App.css';
+import MemoryHeap from './components/MemoryGame/MemoryHeap';
 
 const App = () => {
   return (
@@ -17,6 +18,7 @@ const App = () => {
       </Route>
       <Route path='/debugger' element={<Debugger />} />
       <Route path='/orcoftherings' element={<Runner />} />
+      <Route path='/memoryheap' element={<MemoryHeap />} />
     </Routes>
   );
 };
