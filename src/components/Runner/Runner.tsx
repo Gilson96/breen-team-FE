@@ -25,7 +25,7 @@ const Runner = () => {
         <Modal onClose={() => setScore(0)}>
           <h2>Submit your score!</h2>
           <h3>You got a score of {score}</h3>
-          <ScoreSubmitForm gameId={2} score={score} />
+          <ScoreSubmitForm gameId={1} score={score} />
         </Modal>
       )}
       <div className='game'>

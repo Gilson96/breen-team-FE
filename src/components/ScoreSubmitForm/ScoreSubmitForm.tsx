@@ -1,4 +1,6 @@
 import { useState, type ChangeEvent, type FormEvent } from 'react';
+import { useQuery } from '@tanstack/react-query';
+import { submitScore } from '../../api';
 import Button from '../Button/Button';
 import './ScoreSubmitForm.css';
 
@@ -12,6 +14,13 @@ const ScoreSubmitForm = ({ gameId, score }: ScoreSubmitFormProps) => {
   const [validate, setValidate] = useState(false);
   const [isValid, setIsValid] = useState(false);
 
+  const { isRefetching, isSuccess, isError, refetch } = useQuery({
+    queryKey: ['submitScore'],
+    queryFn: async () => submitScore(gameId, username, score),
+    refetchOnWindowFocus: false,
+    enabled: false
+  });
+
   const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
     setUsername(e.target.value);
     if (e.target.value.length === 3) {
@@ -24,7 +33,7 @@ const ScoreSubmitForm = ({ gameId, score }: ScoreSubmitFormProps) => {
   const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setValidate(true);
-    if (isValid) console.log({ username, gameId, score });
+    if (isValid) refetch();
   };
 
   return (
@@ -42,7 +51,9 @@ const ScoreSubmitForm = ({ gameId, score }: ScoreSubmitFormProps) => {
       {validate && username.length < 3 && (
         <span className='error'>Username must be 3 characters</span>
       )}
-      <Button>Submit Score</Button>
+      <Button>{isRefetching ? 'Submitting score' : 'Submit Score'}</Button>
+      {isError && <span>Error submitting score</span>}
+      {isSuccess && <span>Score submitted!</span>}
     </form>
   );
 };
