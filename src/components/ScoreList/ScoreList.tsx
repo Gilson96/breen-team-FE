@@ -12,9 +12,9 @@ const ScoreList = () => {
       queryKey: ['scores'],
       initialPageParam: 1,
       queryFn: ({ pageParam }) => getScores(pageParam),
-      getNextPageParam: (lastPage, _allPages, lastPageParam) => {
+      getNextPageParam: lastPage => {
         if (lastPage.scores === undefined || lastPage.scores.length < 10) return undefined;
-        return lastPageParam + 1;
+        return lastPage.page + 1;
       }
     });
 

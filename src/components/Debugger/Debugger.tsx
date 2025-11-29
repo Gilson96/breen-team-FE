@@ -1,8 +1,6 @@
 import { useState, type SyntheticEvent } from 'react';
 import { useInterval } from 'usehooks-ts';
-import { IoMdSettings } from 'react-icons/io';
-import { IoFlag } from 'react-icons/io5';
-import { FaClock } from 'react-icons/fa6';
+import { Sliders2, Flag, Clock } from '@nsmr/pixelart-react';
 import Nav from '../Nav/Nav';
 import Modal from '../Modal/Modal';
 import MinesweeperCell from '../DebuggerCell/DebuggerCell';
@@ -16,6 +14,7 @@ const gridDimensions: [number, number] = [16, 16];
 
 const Minesweeper = () => {
   const [dimensions, setDimensions] = useState<[number, number]>(gridDimensions);
+  const [difficulty, setDifficulty] = useState('intermediate');
   const [grid, setGrid] = useState<DebuggerCellData[][]>(createGrid(...gridDimensions));
   const [time, setTime] = useState(0);
   const [startTime, setStartTime] = useState(0);
@@ -111,9 +110,14 @@ const Minesweeper = () => {
     }
   };
 
-  const handleChangeSettings = (x: number, y: number) => {
+  const handleChangeSettings = (
+    x: number,
+    y: number,
+    difficulty: 'easy' | 'intermediate' | 'expert'
+  ) => {
     setShowSettings(false);
     setDimensions([x, y]);
+    setDifficulty(difficulty);
     setGrid(createGrid(x, y));
     handleGameReset(x, y);
   };
@@ -123,24 +127,26 @@ const Minesweeper = () => {
       <div className='minesweeper__title'>
         <h1>Debugger</h1>
         <button onClick={() => setShowSettings(true)}>
-          <IoMdSettings />
+          <Sliders2 />
         </button>
         {showSettings && (
           <Modal onClose={() => setShowSettings(false)}>
             <h2>Difficulty</h2>
-            <Button onClick={() => handleChangeSettings(9, 9)}>Easy</Button>
-            <Button onClick={() => handleChangeSettings(16, 16)}>Intermediate</Button>
-            <Button onClick={() => handleChangeSettings(16, 30)}>Advanced</Button>
+            <Button onClick={() => handleChangeSettings(9, 9, 'easy')}>Easy</Button>
+            <Button onClick={() => handleChangeSettings(16, 16, 'intermediate')}>
+              Intermediate
+            </Button>
+            <Button onClick={() => handleChangeSettings(16, 30, 'expert')}>Expert</Button>
           </Modal>
         )}
       </div>
       <div className='minesweeper__details'>
         <span>
-          <IoFlag />
+          <Flag />
           {flags}
         </span>
         <span>
-          <FaClock />
+          <Clock />
           {time}
         </span>
       </div>
@@ -166,12 +172,12 @@ const Minesweeper = () => {
       {complete && <Button onClick={() => setShowScoreSubmit(true)}>Submit Score</Button>}
       {showScoreSubmit && (
         <Modal onClose={() => setShowScoreSubmit(false)}>
-          <h2>Submit your score!</h2>
           <h3>Finished in {time} seconds!</h3>
+          <p>Difficulty: {difficulty}</p>
           <ScoreSubmitForm gameId={1} score={time} />
         </Modal>
       )}
-      <Nav />
+      <Nav theme='debugger' hidden />
     </main>
   );
 };

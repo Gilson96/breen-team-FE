@@ -8,12 +8,15 @@
   align-items: center;
   gap: 1rem;
   font-family: 'Jersey 25', Arial, Helvetica, sans-serif;
+  transition: transform 0.1s ease-out;
 
   #navToggle {
     border: none;
     position: absolute;
-    top: -100%;
-    padding: 0.5rem 1rem;
+    height: 40px;
+    top: -40px;
+    right: 40px;
+    padding: 0 1rem;
     cursor: pointer;
   }
 
@@ -27,6 +30,7 @@
     text-decoration: none;
     color: var(--polar-night-darker);
     padding: 0.5rem 1rem;
+    transition: color 0.3s;
 
     &.active {
       background-color: var(--frost-dark-blue);
@@ -43,12 +47,16 @@
     background-image: url('background.png');
 
     a {
-      color: var(--aurora-yellow);
+      color: #c67927;
+
+      &:hover {
+        color: var(--aurora-yellow);
+      }
     }
 
     #navToggle {
       background-image: url('background.png');
-      color: var(--aurora-yellow);
+      color: #c67927;
     }
   }
 }

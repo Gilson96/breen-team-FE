@@ -10,6 +10,7 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@nsmr/pixelart-react": "^2.0.0",
     "@tanstack/react-query": "^5.90.11",
     "classnames": "^2.5.1",
     "jotai": "^2.15.1",
@@ -17,7 +18,6 @@
     "motion": "^12.23.24",
     "react": "^19.2.0",
     "react-dom": "^19.2.0",
-    "react-icons": "^5.5.0",
     "react-router": "^7.9.6",
     "usehooks-ts": "^3.1.1"
   },

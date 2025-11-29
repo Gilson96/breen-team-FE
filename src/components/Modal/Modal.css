@@ -18,9 +18,21 @@
     align-items: center;
     justify-content: center;
     gap: 1.25rem;
-    background-color: var(--aurora-yellow);
+    background: #81a1c1;
+    background: linear-gradient(0deg, rgba(129, 161, 193, 1) 0%, rgba(143, 188, 187, 1) 100%);
     padding: 2rem 3rem;
     color: var(--polar-night-darker);
     box-shadow: var(--block-shadow);
+    position: relative;
+
+    .close {
+      background: transparent;
+      border: none;
+      outline: none;
+      position: absolute;
+      top: 0.75rem;
+      right: 0.75rem;
+      cursor: pointer;
+    }
   }
 }
