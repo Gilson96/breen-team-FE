@@ -3,9 +3,8 @@ import { getScores } from '../../api';
 import Loading from '../Loading/Loading';
 import Error from '../Error/Error';
 import ScoreRow from '../ScoreRow/ScoreRow';
-import type { Score } from '../../types';
-import './ScoreList.css';
 import Button from '../Button/Button';
+import './ScoreList.css';
 
 const ScoreList = () => {
   const { isLoading, isError, data, error, fetchNextPage, isFetchingNextPage, hasNextPage } =
@@ -13,7 +12,7 @@ const ScoreList = () => {
       queryKey: ['scores'],
       initialPageParam: 1,
       queryFn: ({ pageParam }) => getScores(pageParam),
-      getNextPageParam: (lastPage: { scores?: Score[] }, _allPages, lastPageParam: number) => {
+      getNextPageParam: (lastPage, _allPages, lastPageParam) => {
         if (lastPage.scores === undefined || lastPage.scores.length < 10) return undefined;
         return lastPageParam + 1;
       }
