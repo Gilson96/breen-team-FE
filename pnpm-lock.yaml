@@ -12,14 +12,20 @@ importers:
         specifier: ^2.0.0
         version: 2.0.0(react-dom@19.2.0(react@19.2.0))(react@19.2.0)
       '@tanstack/react-query':
-        specifier: ^5.90.11
-        version: 5.90.11(react@19.2.0)
+        specifier: ^4.42.0
+        version: 4.42.0(react-dom@19.2.0(react@19.2.0))(react@19.2.0)
+      array-shuffle:
+        specifier: ^4.0.0
+        version: 4.0.0
       classnames:
         specifier: ^2.5.1
         version: 2.5.1
       jotai:
         specifier: ^2.15.1
         version: 2.15.1(@babel/core@7.28.5)(@babel/template@7.27.2)(@types/react@19.2.6)(react@19.2.0)
+      kaboom:
+        specifier: ^3000.1.17
+        version: 3000.1.17
       kaplay:
         specifier: ^4000.0.0-alpha.10
         version: 4000.0.0-alpha.23
@@ -640,6 +646,10 @@ packages:
   argparse@2.0.1:
     resolution: {integrity: sha512-8+9WqebbFzpX9OR+Wa6O29asIogeRMzcGtAINdpMHHyAg10f05aSFVBbcEqGf/PXw1EjAZ+q2/bEBg3DvurK3Q==}
 
+  array-shuffle@4.0.0:
+    resolution: {integrity: sha512-C7U1jQYpMCCQcjhPNtngE3Fki2+wFTaPzc5K4jJPY9Wwce9aQp8BwAkgyMhG6WIQEaE1qnrtkT6XoYkatxXTSQ==}
+    engines: {node: '>=20'}
+
   balanced-match@1.0.2:
     resolution: {integrity: sha512-3oSeUO0TMV67hN1AmbXsK4yaqU7tjiHlbxRDZOpH0KW9+CeX4bRAaX0Anxt0tx2MrpRpWwQaPwIlISEJhYU5Pw==}
 
@@ -951,6 +961,10 @@ packages:
     resolution: {integrity: sha512-XmOWe7eyHYH14cLdVPoyg+GOH3rYX++KpzrylJwSW98t3Nk+U8XOl8FWKOgwtzdb8lXGf6zYwDUzeHMWfxasyg==}
     engines: {node: '>=6'}
     hasBin: true
+
+  kaboom@3000.1.17:
+    resolution: {integrity: sha512-npAtjGxj9Oj9vLpXfURck9eUPHR2ac1Lhc1bNcZ0NWcs+Lgs40Ty+wjujv1C2DwjWvxaX+3r2G64M35BS/Ry2g==}
+    deprecated: Kaboom is no longer maintained. Please use KAPLAY, the new game library built as its successor, by its developers.
 
   kaplay@4000.0.0-alpha.23:
     resolution: {integrity: sha512-2VEQ+68eKQYBbZbSrpd9z11Im6djdfp7cJ/d1m5XXuDHGx1SY5hpJEo6bASui1JZaE1Z+7h8NR3DV3/xMoNWZw==}
@@ -1786,6 +1800,8 @@ snapshots:
 
   argparse@2.0.1: {}
 
+  array-shuffle@4.0.0: {}
+
   balanced-match@1.0.2: {}
 
   baseline-browser-mapping@2.8.30: {}
@@ -2085,6 +2101,8 @@ snapshots:
   json-stable-stringify-without-jsonify@1.0.1: {}
 
   json5@2.2.3: {}
+
+  kaboom@3000.1.17: {}
 
   kaplay@4000.0.0-alpha.23: {}
 
