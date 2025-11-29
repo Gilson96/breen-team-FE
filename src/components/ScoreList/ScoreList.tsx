@@ -1,31 +1,49 @@
-import { useQuery } from '@tanstack/react-query';
+import { useInfiniteQuery } from '@tanstack/react-query';
 import { getScores } from '../../api';
 import Loading from '../Loading/Loading';
 import Error from '../Error/Error';
 import ScoreRow from '../ScoreRow/ScoreRow';
+import Button from '../Button/Button';
 import './ScoreList.css';
-import type { ReactNode } from 'react';
 
 const ScoreList = () => {
-  const { isLoading, isError, data, error } = useQuery({
-    queryKey: ['scores'],
-    queryFn: getScores
-  });
+  const { isLoading, isError, data, error, fetchNextPage, isFetchingNextPage, hasNextPage } =
+    useInfiniteQuery({
+      queryKey: ['scores'],
+      initialPageParam: 1,
+      queryFn: ({ pageParam }) => getScores(pageParam),
+      getNextPageParam: lastPage => {
+        if (lastPage.scores === undefined || lastPage.scores.length < 10) return undefined;
+        return lastPage.page + 1;
+      }
+    });
 
   if (isLoading) {
-    return <Loading>Loding scores</Loading>;
+    return <Loading>Loading scores</Loading>;
   }
 
   if (isError) {
-    return <Error>{error as ReactNode}</Error>;
+    return <Error>{error.message}</Error>;
   }
 
   return (
-    <ul className='scoreList'>
-      {data.scores.map((score, i) => (
-        <ScoreRow score={score} rank={i + 1} key={score.score_id} />
-      ))}
-    </ul>
+    <>
+      <ul className='scoreList'>
+        {data!.pages.map((page, i) => {
+          return (
+            page.scores &&
+            page.scores.map((score, j) => {
+              return <ScoreRow score={score} rank={i * 10 + (j + 1)} key={score.score_id} />;
+            })
+          );
+        })}
+      </ul>
+      {hasNextPage && (
+        <Button onClick={fetchNextPage}>
+          {isFetchingNextPage ? 'Loading scores' : 'Load more scores'}
+        </Button>
+      )}
+    </>
   );
 };
 

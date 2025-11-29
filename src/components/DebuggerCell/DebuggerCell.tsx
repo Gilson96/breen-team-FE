@@ -1,5 +1,5 @@
 import classNames from 'classnames';
-import { IoBugSharp, IoFlag } from 'react-icons/io5';
+import { Bug, Flag } from '@nsmr/pixelart-react';
 import type { SyntheticEvent } from 'react';
 import type { DebuggerCellData } from '../../types';
 import './DebuggerCell.css';
@@ -28,9 +28,9 @@ const MinesweeperCell = ({
       onContextMenu={e => rightClickHandler(e, x, y)}
       {...rest}
     >
-      {bug && <IoBugSharp className='bug' />}
+      {bug && <Bug className='bug' />}
       {proximity > 0 && <span className={`proximity${proximity}`}>{proximity}</span>}
-      {flag && <IoFlag className='flag' />}
+      {flag && <Flag className='flag' />}
     </div>
   );
 };

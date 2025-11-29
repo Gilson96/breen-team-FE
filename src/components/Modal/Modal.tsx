@@ -1,5 +1,6 @@
 import { useEffect, type ReactNode } from 'react';
 import { motion } from 'motion/react';
+import { Close } from '@nsmr/pixelart-react';
 import './Modal.css';
 
 type ModalProps = {
@@ -30,6 +31,9 @@ const Modal = ({ onClose, children }: ModalProps) => {
         className='modal-content'
         // className='flex h-40 w-2/3 flex-col items-center justify-center gap-5 rounded bg-cyan-200 p-2 text-cyan-950'
       >
+        <button onClick={onClose} className='close'>
+          <Close />
+        </button>
         {children}
       </div>
     </motion.div>

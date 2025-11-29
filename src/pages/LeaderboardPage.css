@@ -1,15 +1,16 @@
 .leaderboard {
   width: 100%;
-  height: 100vh;
+  min-height: 100vh;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   gap: 2rem;
+  padding: 2rem 0 8rem;
 
   .leaderboard__title {
     color: var(--snow-storm-dark);
-    text-shadow: var(--block-shadow);
+    text-shadow: var(--text-shadow);
     font-size: 3rem;
   }
 }

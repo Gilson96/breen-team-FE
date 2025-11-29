@@ -1,6 +1,10 @@
-import { useState, type ChangeEvent, type FormEvent } from 'react';
+import { useRef, useState, type ChangeEvent, type FormEvent } from 'react';
+import { Link } from 'react-router';
+import { useMutation } from '@tanstack/react-query';
+import { submitScore } from '../../api';
 import Button from '../Button/Button';
 import './ScoreSubmitForm.css';
+import { ArrowRight } from '@nsmr/pixelart-react';
 
 type ScoreSubmitFormProps = {
   gameId: number;
@@ -8,41 +12,82 @@ type ScoreSubmitFormProps = {
 };
 
 const ScoreSubmitForm = ({ gameId, score }: ScoreSubmitFormProps) => {
-  const [username, setUsername] = useState('');
+  const [initials, setInitials] = useState({ first: '', second: '', third: '' });
   const [validate, setValidate] = useState(false);
   const [isValid, setIsValid] = useState(false);
+  const secondRef = useRef<HTMLInputElement>(null);
+  const thirdRef = useRef<HTMLInputElement>(null);
+
+  const { isPending, isError, isSuccess, mutate } = useMutation({
+    mutationFn: () =>
+      submitScore(gameId, `${initials.first}${initials.second}${initials.third}`, score)
+  });
 
   const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
-    setUsername(e.target.value);
-    if (e.target.value.length === 3) {
-      setIsValid(true);
-    } else {
-      setIsValid(false);
-    }
+    const updatedInitials = { ...initials, [e.target.id]: e.target.value.toUpperCase() };
+
+    setInitials(updatedInitials);
+    setIsValid(!Object.values(updatedInitials).includes(''));
+
+    if (e.target.id === 'first' && e.target.value) secondRef.current!.focus();
+    if (e.target.id === 'second' && e.target.value) thirdRef.current!.focus();
   };
 
   const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setValidate(true);
-    if (isValid) console.log({ username, gameId, score });
+    if (isValid) mutate();
   };
+
+  if (isSuccess) {
+    return (
+      <>
+        <span>Score submitted!</span>
+        <Link to='/leaderboards' className='leaderboardLink'>
+          View leaderboard <ArrowRight />
+        </Link>
+      </>
+    );
+  }
 
   return (
     <form id='scoreSubmit' onSubmit={handleSubmit}>
-      <label htmlFor='username'>Enter your name</label>
-      <input
-        type='text'
-        name='username'
-        id='username'
-        value={username}
-        onChange={handleChange}
-        minLength={3}
-        maxLength={3}
-      />
-      {validate && username.length < 3 && (
-        <span className='error'>Username must be 3 characters</span>
-      )}
-      <Button>Submit Score</Button>
+      <label htmlFor='initial1'>Enter your initials</label>
+      <fieldset className='initials'>
+        <input
+          type='text'
+          name='first'
+          id='first'
+          value={initials.first}
+          onChange={handleChange}
+          minLength={1}
+          maxLength={1}
+          autoFocus
+        />
+        <input
+          type='text'
+          name='second'
+          id='second'
+          value={initials.second}
+          onChange={handleChange}
+          minLength={1}
+          maxLength={1}
+          ref={secondRef}
+        />
+        <input
+          type='text'
+          name='third'
+          id='third'
+          value={initials.third}
+          onChange={handleChange}
+          minLength={1}
+          maxLength={1}
+          ref={thirdRef}
+        />
+      </fieldset>
+      {validate && !isValid && <span>Username must be 3 characters</span>}
+      {isError && <span>Error submitting score</span>}
+      <Button>{isPending ? 'Submitting score' : 'Submit Score'}</Button>
     </form>
   );
 };

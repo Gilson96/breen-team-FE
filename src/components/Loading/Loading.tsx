@@ -2,7 +2,7 @@ import type { ReactNode } from 'react';
 import './Loading.css';
 
 type LoadingProps = {
-  children: ReactNode;
+  children?: ReactNode;
 };
 
 const Loading = ({ children }: LoadingProps) => {

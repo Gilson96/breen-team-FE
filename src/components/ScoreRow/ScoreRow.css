@@ -4,7 +4,7 @@
   justify-content: space-between;
   padding: 0.5rem 1rem;
   width: 100%;
-  background-color: var(--polar-night-dark);
+  background-color: var(--polar-night-darker);
   box-shadow: var(--block-shadow);
   color: var(--snow-storm-light);
   font-size: 1.75rem;
