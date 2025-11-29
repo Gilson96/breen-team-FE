@@ -7,10 +7,4 @@
   justify-content: center;
   gap: 2rem;
   padding-bottom: 8rem;
-
-  .games__title {
-    color: var(--snow-storm-dark);
-    text-shadow: var(--text-shadow);
-    font-size: 3rem;
-  }
 }
