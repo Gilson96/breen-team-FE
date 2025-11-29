@@ -6,6 +6,7 @@
   align-items: center;
   justify-content: center;
   gap: 2rem;
+  padding-bottom: 8rem;
 
   .games__title {
     color: var(--snow-storm-dark);

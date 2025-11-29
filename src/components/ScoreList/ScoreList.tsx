@@ -1,39 +1,49 @@
-import { useState, type ReactNode } from 'react';
-import { useQuery } from '@tanstack/react-query';
+import { useInfiniteQuery } from '@tanstack/react-query';
 import { getScores } from '../../api';
 import Loading from '../Loading/Loading';
 import Error from '../Error/Error';
 import ScoreRow from '../ScoreRow/ScoreRow';
-import Button from '../Button/Button';
-import './ScoreList.css';
 import type { Score } from '../../types';
+import './ScoreList.css';
+import Button from '../Button/Button';
 
 const ScoreList = () => {
-  const [scores, setScores] = useState<Score[]>([]);
-
-  const { isLoading, isError, data, error, refetch } = useQuery({
-    queryKey: ['scores'],
-    queryFn: getScores
-  });
+  const { isLoading, isError, data, error, fetchNextPage, isFetchingNextPage, hasNextPage } =
+    useInfiniteQuery({
+      queryKey: ['scores'],
+      initialPageParam: 1,
+      queryFn: ({ pageParam }) => getScores(pageParam),
+      getNextPageParam: (lastPage: { scores?: Score[] }, _allPages, lastPageParam: number) => {
+        if (lastPage.scores === undefined || lastPage.scores.length < 10) return undefined;
+        return lastPageParam + 1;
+      }
+    });
 
   if (isLoading) {
     return <Loading>Loading scores</Loading>;
   }
 
   if (isError) {
-    return <Error>{error as ReactNode}</Error>;
+    return <Error>{error.message}</Error>;
   }
-
-  const handleClick = () => {};
 
   return (
     <>
       <ul className='scoreList'>
-        {scores.map((score, i) => (
-          <ScoreRow score={score} rank={i + 1} key={score.score_id} />
-        ))}
+        {data!.pages.map((page, i) => {
+          return (
+            page.scores &&
+            page.scores.map((score, j) => {
+              return <ScoreRow score={score} rank={i * 10 + (j + 1)} key={score.score_id} />;
+            })
+          );
+        })}
       </ul>
-      <Button>Load More Scores</Button>
+      {hasNextPage && (
+        <Button onClick={fetchNextPage}>
+          {isFetchingNextPage ? 'Loading scores' : 'Load more scores'}
+        </Button>
+      )}
     </>
   );
 };
