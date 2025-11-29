@@ -1,5 +1,5 @@
-import HomeButton from '../components/HomeButton/HomeButton';
 import Orc from '../components/Orc/Orc';
+import HomeButton from '../components/HomeButton/HomeButton';
 import './HomePage.css';
 
 const HomePage = () => {

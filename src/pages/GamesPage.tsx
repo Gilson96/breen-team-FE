@@ -1,11 +1,12 @@
-import Nav from '../components/Nav/Nav';
+import Heading from '../components/Heading/Heading';
 import HomeButton from '../components/HomeButton/HomeButton';
+import Nav from '../components/Nav/Nav';
 import './GamesPage.css';
 
 const GamesPage = () => {
   return (
     <main className='games'>
-      <h1 className='games__title'>Games</h1>
+      <Heading>Games</Heading>
       <HomeButton to='/orcoftherings'>Orc of the Rings</HomeButton>
       <HomeButton to='/debugger'>Debugger</HomeButton>
       <HomeButton to='/memoryheap'>Memory Heap</HomeButton>

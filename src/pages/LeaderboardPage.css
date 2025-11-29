@@ -7,10 +7,4 @@
   justify-content: center;
   gap: 2rem;
   padding: 2rem 0 8rem;
-
-  .leaderboard__title {
-    color: var(--snow-storm-dark);
-    text-shadow: var(--text-shadow);
-    font-size: 3rem;
-  }
 }

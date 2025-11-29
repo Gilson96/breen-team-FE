@@ -1,11 +1,12 @@
-import Nav from '../components/Nav/Nav';
+import Heading from '../components/Heading/Heading';
 import ScoreList from '../components/ScoreList/ScoreList';
+import Nav from '../components/Nav/Nav';
 import './LeaderboardPage.css';
 
 const LeaderboardPage = () => {
   return (
     <main className='leaderboard'>
-      <h1 className='leaderboard__title'>Leaderboard</h1>
+      <Heading>Top Scores</Heading>
       <ScoreList />
       <Nav />
     </main>
