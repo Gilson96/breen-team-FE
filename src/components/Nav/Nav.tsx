@@ -1,10 +1,30 @@
+import { useState } from 'react';
+import { NavLink } from 'react-router';
+import { FaAngleUp, FaAngleDown } from 'react-icons/fa';
+import classNames from 'classnames';
 import './Nav.css';
 
-import { NavLink } from 'react-router';
+type NavProps = {
+  theme?: string;
+  hidden?: boolean;
+};
 
-const Nav = () => {
+const Nav = ({ theme = 'default', hidden }: NavProps) => {
+  const [toggleNav, setToggleNav] = useState(false);
+
+  const navClasses = classNames({
+    nav: true,
+    hidden: toggleNav,
+    [theme]: theme
+  });
+
   return (
-    <nav className='nav'>
+    <nav className={navClasses}>
+      {hidden && (
+        <button id='navToggle' onClick={() => setToggleNav(!toggleNav)}>
+          {toggleNav ? <FaAngleUp /> : <FaAngleDown />}
+        </button>
+      )}
       <NavLink to='/'>Home</NavLink>
       <NavLink to='/leaderboards'>Leaderboards</NavLink>
       <NavLink to='/games'>Games</NavLink>

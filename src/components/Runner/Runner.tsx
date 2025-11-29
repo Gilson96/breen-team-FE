@@ -31,7 +31,7 @@ const Runner = () => {
       <div className='game'>
         <canvas ref={gameRef}></canvas>
       </div>
-      <Nav />
+      <Nav hidden theme='orc' />
     </>
   );
 };

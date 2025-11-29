@@ -12,7 +12,7 @@ import { calculateBugs, createGrid, revealBugs, revealGridRecursively } from './
 import type { DebuggerCellData } from '../../types';
 import './Debugger.css';
 
-const gridDimensions: [number, number] = [9, 9];
+const gridDimensions: [number, number] = [16, 16];
 
 const Minesweeper = () => {
   const [dimensions, setDimensions] = useState<[number, number]>(gridDimensions);
