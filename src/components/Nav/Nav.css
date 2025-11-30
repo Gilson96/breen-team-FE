@@ -44,7 +44,7 @@
   }
 
   &.orc {
-    background-image: url('background.png');
+    background-image: url('/background.png');
 
     a {
       color: #c67927;
@@ -55,7 +55,7 @@
     }
 
     #navToggle {
-      background-image: url('background.png');
+      background-image: url('/background.png');
       color: #c67927;
     }
   }
