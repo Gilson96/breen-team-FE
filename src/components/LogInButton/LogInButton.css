@@ -16,4 +16,10 @@
   &:hover {
     background-color: var(--snow-storm-light);
   }
+  &:active {
+    position: relative;
+    top: 5px;
+    left: 5px;
+    box-shadow: none;
+  }
 }
