@@ -1,5 +1,6 @@
 import Orc from '../components/Orc/Orc';
 import HomeButton from '../components/HomeButton/HomeButton';
+import LogInButton from '../components/LogInButton/LogInButton';
 import './HomePage.css';
 
 const HomePage = () => {
@@ -17,6 +18,7 @@ const HomePage = () => {
         View Games
       </HomeButton>
       <HomeButton to='/leaderboards'>View Leaderboards</HomeButton>
+      <LogInButton />
     </main>
   );
 };

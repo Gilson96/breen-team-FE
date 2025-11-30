@@ -1,0 +1,19 @@
+#logInButton {
+  color: var(--polar-night-darker);
+  display: flex;
+  align-items: center;
+  background-color: var(--snow-storm-dark);
+  padding: 0.5rem 1rem;
+  box-shadow: var(--block-shadow);
+  cursor: pointer;
+  gap: 1rem;
+
+  svg {
+    width: 30px;
+    height: 30px;
+  }
+
+  &:hover {
+    background-color: var(--snow-storm-light);
+  }
+}
