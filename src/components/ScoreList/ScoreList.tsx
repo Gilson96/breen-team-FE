@@ -10,8 +10,6 @@ import './ScoreList.css';
 const ScoreList = () => {
   const { scoreId } = useParams();
 
-  console.log(scoreId);
-
   const {
     isLoading,
     isError,
