@@ -4,7 +4,8 @@ import { cards } from './cards';
 import { arrayShuffle } from 'array-shuffle';
 import Card from './Card';
 import cardBack from '../../../public/memoryGame/back_card.png';
-
+import './MemoryHeap.css';
+ 
 const MemoryHeap = () => {
   const [deck, setDeck] = useState<CardProps[]>(cards);
   const [restartGame, setRestartGame] = useState(false);
@@ -55,16 +56,17 @@ const MemoryHeap = () => {
   }
 
   return (
-    <main className='flex h-full w-full flex-col items-center justify-center'>
-      <div>
-        <p>Memory heap</p>
+    <main className='game-container'>
+      <div className='game-header'>
+        <h1 className='game-title'>Memory heap</h1>
         <button
+        className='game-button'
           onClick={() => {
             setRestartGame(true);
           }}
-        ></button>
+        >Restart game</button>
       </div>
-      <div className='grid grid-cols-3'>
+      <div className='card-container'>
         {deck.map(card => (
           <Card
             card={card}

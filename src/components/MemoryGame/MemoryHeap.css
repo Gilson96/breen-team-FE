@@ -1,0 +1,48 @@
+.game-container {
+  display: flex;
+  justify-content: center;
+  height: 100%;
+  width: 100%;
+  flex-direction: column;
+  align-items: center;
+  padding: 2%;
+}
+
+.game-header {
+  display: flex;
+  height: 100%;
+  width: 100%;
+  padding-bottom: 2%;
+  align-items: end;
+  justify-content: center;
+  gap: 2%;
+}
+
+.game-title {
+  font-size: 3rem;
+  color: lightcoral;
+}
+
+.game-button {
+  height: 2.5rem;
+  width: auto;
+  cursor: pointer;
+}
+
+.card-container {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  place-self: center;
+}
+
+.card {
+  border: 1px solid lightgray;
+  height: 10rem;
+  width: 10rem;
+}
+
+.card-front,
+.card-back {
+  height: 100%;
+  width: 100%;
+}

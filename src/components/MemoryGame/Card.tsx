@@ -8,11 +8,11 @@ const Card = ({ card, handleFlip, disabled, cardBack, flipped }: CardProps) => {
   };
 
   return (
-    <div>
+    <div className='card'>
       {flipped ? (
-        <img src={card?.src} alt='card front' />
+        <img src={card?.src} className='card-front' alt='card front' />
       ) : (
-        <img src={cardBack} onClick={handleCardFlip} alt='card back' />
+        <img className='card-back' src={cardBack} onClick={handleCardFlip} alt='card back' />
       )}
     </div>
   );
