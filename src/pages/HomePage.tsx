@@ -9,9 +9,9 @@ const HomePage = () => {
       <div className='homePage__title'>
         <Orc />
         <h1>
-          {' '}
-          Burnout <br />
-          <span>Breakers</span>
+          Burnout
+          <br />
+          <span>Break</span>
         </h1>
       </div>
       <HomeButton to='/games' animate>
