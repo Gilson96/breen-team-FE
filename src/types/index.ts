@@ -18,12 +18,17 @@ export type DebuggerCellData = {
 };
 
 export type CardProps = {
-  id?: number
-  src?: string
-  cardBack?: string
+  id?: number;
+  src?: string;
+  cardBack?: string;
   card?: CardProps;
-  matched?: boolean
-  flipped?: boolean
-  disabled?: boolean
+  matched?: boolean;
+  flipped?: boolean;
+  disabled?: boolean;
   handleFlip?: (card: CardProps) => void;
-}
+};
+
+export type Game = {
+  game_id: number;
+  name: string;
+};
