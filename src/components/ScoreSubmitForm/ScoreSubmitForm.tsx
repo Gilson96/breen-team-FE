@@ -1,10 +1,9 @@
 import { useRef, useState, type ChangeEvent, type FormEvent } from 'react';
-import { Link } from 'react-router';
 import { useMutation } from '@tanstack/react-query';
 import { submitScore } from '../../api';
 import Button from '../Button/Button';
 import './ScoreSubmitForm.css';
-import { ArrowRight } from '@nsmr/pixelart-react';
+import ArrowLink from '../ArrowLink/ArrowLink';
 
 type ScoreSubmitFormProps = {
   gameId: number;
@@ -43,9 +42,7 @@ const ScoreSubmitForm = ({ gameId, score }: ScoreSubmitFormProps) => {
     return (
       <>
         <span>Score submitted!</span>
-        <Link to={`/leaderboards/${data.score.score_id}`} className='leaderboardLink'>
-          View leaderboard <ArrowRight />
-        </Link>
+        <ArrowLink to={`/leaderboards/${data.score.score_id}`}>View Your Score</ArrowLink>
       </>
     );
   }
