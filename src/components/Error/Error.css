@@ -11,8 +11,5 @@
   text-shadow: 2px 2px 0 rgba(0, 0, 0, 1);
   padding: 1rem;
   text-align: center;
-
-  a {
-    color: var(--snow-storm-light);
-  }
+  text-shadow: none;
 }

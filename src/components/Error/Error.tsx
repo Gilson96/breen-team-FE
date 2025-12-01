@@ -1,5 +1,5 @@
 import type { ReactNode } from 'react';
-import { Link } from 'react-router';
+import ArrowLink from '../ArrowLink/ArrowLink';
 import './Error.css';
 
 type ErrorProps = {
@@ -10,7 +10,7 @@ const Error = ({ children }: ErrorProps) => {
   return (
     <div className='error'>
       {children}
-      <Link to='/'>Back to Home Page</Link>
+      <ArrowLink to='/'>Back to Home Page</ArrowLink>
     </div>
   );
 };
