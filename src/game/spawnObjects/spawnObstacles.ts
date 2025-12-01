@@ -1,6 +1,6 @@
-import type { KAPLAYCtx } from 'kaplay';
+import type { KaboomCtx } from 'kaboom';
 
-export function groundObstacles(k: KAPLAYCtx) {
+export function groundObstacles(k: KaboomCtx) {
   k.add([
     k.pos(k.width() + 200, k.height() - 60),
     k.rect(20, 300),
@@ -27,7 +27,7 @@ export function groundObstacles(k: KAPLAYCtx) {
   ]);
 }
 
-export function topObstacles(k: KAPLAYCtx) {
+export function topObstacles(k: KaboomCtx) {
   k.add([
     k.pos(k.width() + 200, k.height() - 60),
     k.rect(20, 300),
@@ -52,7 +52,7 @@ export function topObstacles(k: KAPLAYCtx) {
   ]);
 }
 
-export function spawnObstacles(k: KAPLAYCtx) {
+export function spawnObstacles(k: KaboomCtx) {
   k.wait(k.rand(1, 3), () => {
     const spawn = k.randi(1, 6);
 

@@ -1,6 +1,17 @@
-import type { AudioPlay, KAPLAYCtx, GameObj } from 'kaplay';
+import type { AudioPlay, KaboomCtx, GameObj } from 'kaboom';
 
-export function playerInputs(k: KAPLAYCtx, player: GameObj, running: AudioPlay) {
+export function playerInputs(k: KaboomCtx, player: GameObj, running: AudioPlay) {
+  k.onClick(() => {
+    if (player.isGrounded()) {
+      running.paused = true;
+      player.jump(1500);
+    }
+  });
+  if (running.paused === true) {
+    k.wait(0.6, () => {
+      running.paused = false;
+    });
+  }
   player.onUpdate(() => {
     k.onKeyPress('space', () => {
       if (player.isGrounded()) {
@@ -8,16 +19,5 @@ export function playerInputs(k: KAPLAYCtx, player: GameObj, running: AudioPlay) 
         player.jump(1500);
       }
     });
-    k.onClick(() => {
-      if (player.isGrounded()) {
-        running.paused = true;
-        player.jump(1500);
-      }
-    });
-    if (running.paused === true) {
-      k.wait(0.6, () => {
-        running.paused = false;
-      });
-    }
   });
 }

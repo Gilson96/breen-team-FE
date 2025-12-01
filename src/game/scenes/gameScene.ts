@@ -1,4 +1,4 @@
-import type { KAPLAYCtx } from 'kaplay';
+import type { KaboomCtx } from 'kaboom';
 
 import { playMusic, playRunningSound } from '../audio/playAudio.ts';
 
@@ -14,7 +14,7 @@ import { backgroundAnim } from '../backgroundAnim.ts';
 import { spawnCages } from '../spawnObjects/spawnCages.ts';
 import { spawnTorch } from '../spawnObjects/spawnTorches.ts';
 
-export function playGame(k: KAPLAYCtx) {
+export function playGame(k: KaboomCtx) {
   k.scene('game', () => {
     const music = playMusic(k);
     const running = playRunningSound(k);
@@ -29,10 +29,17 @@ export function playGame(k: KAPLAYCtx) {
       k.color(255, 153, 70)
     ]);
 
-    k.setGravity(4000);
     backgroundAnim(k);
 
     const player = spawnPlayer(k);
+
+    k.setGravity(4000);
+
+    k.onUpdate(() => {
+      if (k.getGravity() > 4000) {
+        k.setGravity(400);
+      }
+    });
 
     playerInputs(k, player, running);
     playerCollision(k, player, scoreLabel, music, running);

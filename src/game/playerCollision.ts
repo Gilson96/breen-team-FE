@@ -1,8 +1,8 @@
-import type { AudioPlay, KAPLAYCtx, GameObj } from 'kaplay';
+import type { AudioPlay, KaboomCtx, GameObj } from 'kaboom';
 import { playcatchKnifeSound } from './audio/playAudio';
 
 export function playerCollision(
-  k: KAPLAYCtx,
+  k: KaboomCtx,
   player: GameObj,
   scoreLabel: GameObj,
   music: AudioPlay,

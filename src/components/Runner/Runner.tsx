@@ -3,7 +3,7 @@ import { atom, useAtom } from 'jotai';
 import Nav from '../Nav/Nav';
 import Modal from '../Modal/Modal';
 import ScoreSubmitForm from '../ScoreSubmitForm/ScoreSubmitForm';
-import initGame from '../../backport/initGame';
+import initGame from '../../game/initGame';
 import './Runner.css';
 
 const scoreAtom = atom(0);

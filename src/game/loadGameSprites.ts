@@ -1,6 +1,6 @@
-import type { KAPLAYCtx } from 'kaplay';
+import type { KaboomCtx } from 'kaboom';
 
-export function loadSprites(k: KAPLAYCtx) {
+export function loadSprites(k: KaboomCtx) {
   k.loadFont('font', './PixelifySans.ttf');
 
   k.loadSprite('floorSprite', './floor.png');

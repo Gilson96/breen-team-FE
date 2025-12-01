@@ -1,7 +1,7 @@
-import type { KAPLAYCtx } from 'kaplay';
+import type { KaboomCtx } from 'kaboom';
 import { spawnBackground } from './spawnObjects/spawnBackground';
 
-export function backgroundAnim(k: KAPLAYCtx) {
+export function backgroundAnim(k: KaboomCtx) {
   const [firstTile, secondTile] = spawnBackground(k);
   const backgroundTiles = [{ speed: -100, sections: [firstTile, secondTile] }];
 

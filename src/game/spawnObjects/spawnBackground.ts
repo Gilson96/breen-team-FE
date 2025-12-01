@@ -1,10 +1,10 @@
-import type { KAPLAYCtx } from 'kaplay';
+import type { KaboomCtx } from 'kaboom';
 
-export function spawnBackground(k: KAPLAYCtx) {
+export function spawnBackground(k: KaboomCtx) {
   const firstTile = k.add([
     k.sprite('background'),
     k.pos(0, k.height() - 50),
-    k.body({ isStatic: true }),
+    // k.body({ isStatic: true }),
     k.anchor('botleft'),
     k.scale(k.vec2(2)),
     'background'
@@ -13,7 +13,7 @@ export function spawnBackground(k: KAPLAYCtx) {
   const secondTile = k.add([
     k.sprite('background'),
     k.pos(k.width(), k.height() - 50),
-    k.body({ isStatic: true }),
+    // k.body({ isStatic: true }),
     k.anchor('botleft'),
     k.scale(k.vec2(2)),
     'background'

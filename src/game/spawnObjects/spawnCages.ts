@@ -1,6 +1,6 @@
-import type { KAPLAYCtx } from 'kaplay';
+import type { KaboomCtx } from 'kaboom';
 
-export function spawnCages(k: KAPLAYCtx, position = 300) {
+export function spawnCages(k: KaboomCtx, position = 300) {
   k.add([
     k.sprite('backgroundObject'),
     k.pos(k.width() + 100, k.height() - position),

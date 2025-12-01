@@ -1,6 +1,6 @@
-import { type KAPLAYCtx } from 'kaplay';
+import { type KaboomCtx } from 'kaboom';
 
-export function torch(k: KAPLAYCtx, spacing: number) {
+export function torch(k: KaboomCtx, spacing: number) {
   k.add([
     k.sprite('torch', { anim: 'run' }),
     k.pos(k.width() + spacing, k.height() - 250),
@@ -12,7 +12,7 @@ export function torch(k: KAPLAYCtx, spacing: number) {
   ]);
 }
 
-export function spawnTorch(k: KAPLAYCtx) {
+export function spawnTorch(k: KaboomCtx) {
   k.wait(k.rand(3, 7), () => {
     torch(k, 0);
     spawnTorch(k);
