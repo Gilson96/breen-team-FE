@@ -18,7 +18,7 @@ const ScoreSubmitForm = ({ gameId, score }: ScoreSubmitFormProps) => {
   const secondRef = useRef<HTMLInputElement>(null);
   const thirdRef = useRef<HTMLInputElement>(null);
 
-  const { isPending, isError, isSuccess, mutate } = useMutation({
+  const { isPending, isError, isSuccess, data, mutate } = useMutation({
     mutationFn: () =>
       submitScore(gameId, `${initials.first}${initials.second}${initials.third}`, score)
   });
@@ -43,7 +43,7 @@ const ScoreSubmitForm = ({ gameId, score }: ScoreSubmitFormProps) => {
     return (
       <>
         <span>Score submitted!</span>
-        <Link to='/leaderboards' className='leaderboardLink'>
+        <Link to={`/leaderboards/${data.score.score_id}`} className='leaderboardLink'>
           View leaderboard <ArrowRight />
         </Link>
       </>
@@ -87,7 +87,7 @@ const ScoreSubmitForm = ({ gameId, score }: ScoreSubmitFormProps) => {
       </fieldset>
       {validate && !isValid && <span>Username must be 3 characters</span>}
       {isError && <span>Error submitting score</span>}
-      <Button>{isPending ? 'Submitting score' : 'Submit Score'}</Button>
+      <Button disabled={isPending}>{isPending ? 'Submitting score' : 'Submit Score'}</Button>
     </form>
   );
 };

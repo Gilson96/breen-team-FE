@@ -12,18 +12,27 @@ const ScoreList = () => {
 
   console.log(scoreId);
 
-  const { isLoading, isError, data, error, fetchNextPage, isFetchingNextPage, hasNextPage } =
-    useInfiniteQuery({
-      queryKey: ['scores'],
-      initialPageParam: 1,
-      queryFn: ({ pageParam }) => getScores(pageParam, scoreId),
-      getNextPageParam: lastPage => {
-        if (lastPage.scores === undefined || lastPage.scores.length < 10) return undefined;
-        return lastPage.page + 1;
-      }
-    });
+  const {
+    isLoading,
+    isError,
+    data,
+    error,
+    fetchNextPage,
+    isFetchingNextPage,
+    hasNextPage,
+    isFetchedAfterMount
+  } = useInfiniteQuery({
+    queryKey: ['scores'],
+    initialPageParam: 1,
+    queryFn: ({ pageParam }) => getScores(pageParam, scoreId),
+    getNextPageParam: lastPage => {
+      if (lastPage.scores === undefined || lastPage.scores.length < 10) return undefined;
+      return lastPage.page + 1;
+    },
+    refetchOnMount: 'always'
+  });
 
-  if (isLoading) {
+  if (isLoading || !isFetchedAfterMount) {
     return <Loading>Loading scores</Loading>;
   }
 
