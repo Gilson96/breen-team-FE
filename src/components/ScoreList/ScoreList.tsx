@@ -1,4 +1,5 @@
 import { useInfiniteQuery } from '@tanstack/react-query';
+import { useParams } from 'react-router';
 import { getScores } from '../../api';
 import Loading from '../Loading/Loading';
 import Error from '../Error/Error';
@@ -7,18 +8,31 @@ import Button from '../Button/Button';
 import './ScoreList.css';
 
 const ScoreList = () => {
-  const { isLoading, isError, data, error, fetchNextPage, isFetchingNextPage, hasNextPage } =
-    useInfiniteQuery({
-      queryKey: ['scores'],
-      initialPageParam: 1,
-      queryFn: ({ pageParam }) => getScores(pageParam),
-      getNextPageParam: lastPage => {
-        if (lastPage.scores === undefined || lastPage.scores.length < 10) return undefined;
-        return lastPage.page + 1;
-      }
-    });
+  const { scoreId } = useParams();
 
-  if (isLoading) {
+  console.log(scoreId);
+
+  const {
+    isLoading,
+    isError,
+    data,
+    error,
+    fetchNextPage,
+    isFetchingNextPage,
+    hasNextPage,
+    isFetchedAfterMount
+  } = useInfiniteQuery({
+    queryKey: ['scores'],
+    initialPageParam: 1,
+    queryFn: ({ pageParam }) => getScores(pageParam, scoreId),
+    getNextPageParam: lastPage => {
+      if (lastPage.scores === undefined || lastPage.scores.length < 10) return undefined;
+      return lastPage.page + 1;
+    },
+    refetchOnMount: 'always'
+  });
+
+  if (isLoading || !isFetchedAfterMount) {
     return <Loading>Loading scores</Loading>;
   }
 
@@ -33,13 +47,20 @@ const ScoreList = () => {
           return (
             page.scores &&
             page.scores.map((score, j) => {
-              return <ScoreRow score={score} rank={i * 10 + (j + 1)} key={score.score_id} />;
+              return (
+                <ScoreRow
+                  score={score}
+                  rank={i * 10 + (j + 1)}
+                  key={score.score_id}
+                  highlight={Number(scoreId) === score.score_id}
+                />
+              );
             })
           );
         })}
       </ul>
-      {hasNextPage && (
-        <Button onClick={fetchNextPage}>
+      {hasNextPage && !scoreId && (
+        <Button onClick={fetchNextPage} disabled={isFetchingNextPage}>
           {isFetchingNextPage ? 'Loading scores' : 'Load more scores'}
         </Button>
       )}

@@ -3,6 +3,7 @@ import './Button.css';
 
 type ButtonProps = {
   onClick?: () => void;
+  disabled?: boolean;
   children: ReactNode;
 };
 
