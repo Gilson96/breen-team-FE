@@ -13,7 +13,7 @@ const App = () => {
     <Routes>
       <Route element={<SquaresContainer />}>
         <Route path='/' element={<HomePage />} />
-        <Route path='/leaderboards' element={<LeaderboardPage />} />
+        <Route path='/leaderboards/:scoreId?' element={<LeaderboardPage />} />
         <Route path='/games' element={<GamesPage />} />
       </Route>
       <Route path='/debugger' element={<Debugger />} />

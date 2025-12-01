@@ -9,6 +9,11 @@
   color: var(--snow-storm-light);
   font-size: 1.75rem;
 
+  &.highlight {
+    background-color: var(--aurora-yellow);
+    color: var(--polar-night-darker);
+  }
+
   .scoreRow__rank {
     width: 3rem;
   }
