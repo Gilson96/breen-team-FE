@@ -1,7 +1,7 @@
 import { motion } from 'motion/react';
 import type { CardProps } from '../../types';
 
-const Card = ({ card, handleFlip, disabled, cardBack, flipped }: CardProps) => {
+const Card = ({ card, playGame, handleFlip, disabled, cardBack, flipped }: CardProps) => {
   const handleCardFlip = () => {
     if (!disabled) {
       handleFlip!(card!);
@@ -9,19 +9,21 @@ const Card = ({ card, handleFlip, disabled, cardBack, flipped }: CardProps) => {
   };
 
   return flipped ? (
-    <motion.div
+    <motion.button
       animate={{ rotateY: flipped ? 180 : 0 }}
       transition={{ duration: 1 }}
       style={{ backgroundImage: `url(${card?.src})` }}
       className='card-front'
-    ></motion.div>
+      disabled={playGame ? false : true}
+    ></motion.button>
   ) : (
-    <motion.div
+    <motion.button
       animate={{ rotateY: flipped ? 180 : 0 }}
       transition={{ duration: 1 }}
       className='card-back'
       onClick={handleCardFlip}
-    ></motion.div>
+      disabled={playGame ? false : true}
+    ></motion.button>
   );
 };
 

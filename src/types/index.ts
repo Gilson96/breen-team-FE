@@ -26,4 +26,5 @@ export type CardProps = {
   flipped?: boolean
   disabled?: boolean
   handleFlip?: (card: CardProps) => void;
+  playGame?: boolean
 }
