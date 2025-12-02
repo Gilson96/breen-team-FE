@@ -36,16 +36,16 @@ function column(k: KaboomCtx) {
   ]);
 }
 
-export function spawnBackgroundProps(k: KaboomCtx) {
-  k.wait(k.rand(1, 5), () => {
-    const spawn = k.randi(0, 11);
+export function spawnBackgroundProps(k: KaboomCtx, waitTime = 1) {
+  console.log(waitTime);
+
+  const spawn = k.randi(0, 20);
+  if (spawn > 9) waitTime = 3;
+  k.wait(k.rand(waitTime, 5), () => {
     if (spawn <= 5) torch(k, k.randi(200, 300));
     else if (spawn <= 9) column(k);
-    else if (spawn > 9) {
-      gate(k);
-      k.wait(2, () => {
-        spawnBackgroundProps(k);
-      });
-    } else spawnBackgroundProps(k);
+    else gate(k);
+
+    spawnBackgroundProps(k, waitTime);
   });
 }
