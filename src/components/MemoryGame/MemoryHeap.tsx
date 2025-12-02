@@ -16,7 +16,7 @@ const MemoryHeap = () => {
   const [firstFlip, setFirstFlip] = useState<CardProps | null>(null);
   const [secondFlip, setSecondFlip] = useState<CardProps | null>(null);
   const [timer, setTimer] = useState(0);
-  const [delay, setDelay] = useState<number>(200);
+  const [delay] = useState<number>(200);
   const [playGame, setPlayGame] = useState(false);
   const [score, setScore] = useState(0);
   const [showScoreSubmit, setShowScoreSubmit] = useState(false);

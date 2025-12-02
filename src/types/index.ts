@@ -27,3 +27,8 @@ export type CardProps = {
   handleFlip?: (card: CardProps) => void;
   playGame?: boolean
 }
+
+export type Game = {
+  game_id: number;
+  name: string;
+};
