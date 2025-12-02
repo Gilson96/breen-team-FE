@@ -20,7 +20,7 @@ const GameList = () => {
   }
 
   return data!.games.map(({ name }) => (
-    <HomeButton to={`/${name.replaceAll(' ', '')}`}>{name}</HomeButton>
+    <HomeButton to={`/${name.toLowerCase().replaceAll(' ', '')}`}>{name}</HomeButton>
   ));
 };
 
