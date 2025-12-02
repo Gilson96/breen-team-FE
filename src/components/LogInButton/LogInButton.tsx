@@ -1,9 +1,26 @@
+import { useEffect } from 'react';
 import { Link } from 'react-router';
 import './LogInButton.css';
 
 const LogInButton = () => {
+  useEffect(() => {
+    console.log('UseEffect running...');
+    (async () => {
+      const response = await fetch('http://localhost:4000/api/auth/current_user', {
+        mode: 'cors',
+        credentials: 'include',
+        headers: {
+          'Content-Type': 'application/json'
+        }
+      });
+      const user = await response.json();
+      console.log(user);
+    })();
+  }, []);
+
   return (
-    <Link to='https://breen-team-backend.vercel.app/api/auth/google' id='logInButton'>
+    // <Link to='https://breen-team-backend.vercel.app/api/auth/google' id='logInButton'>
+    <Link to='http://localhost:4000/api/auth/google' id='logInButton'>
       <svg
         width='800px'
         height='800px'
