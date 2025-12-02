@@ -1,9 +1,9 @@
-const bat = './bat.png';
-const cave = './cave.png';
-const knife = './knife.png';
-const orc = './orc.png';
-const rock = './rock.png';
-const shield = './shield.png';
+const bat = '/bat.png';
+const cave = '/cave.png';
+const knife = '/knife.png';
+const orc = '/orc.png';
+const rock = '/rock.png';
+const shield = '/shield.png';
 
 export const cards = [
   { id: 1, src: bat, matched: false },
