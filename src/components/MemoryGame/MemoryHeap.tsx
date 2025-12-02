@@ -130,7 +130,7 @@ const MemoryHeap = () => {
           ))
         )}
       </div>
-      <div className='nav'>
+      <div className='nav-bar'>
         <Nav />
       </div>
     </main>
