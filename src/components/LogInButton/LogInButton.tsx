@@ -1,19 +1,7 @@
-import { useEffect } from 'react';
 import { Link } from 'react-router';
 import './LogInButton.css';
 
 const LogInButton = () => {
-  useEffect(() => {
-    console.log('UseEffect running...');
-    (async () => {
-      const response = await fetch('https://breen-team-backend.vercel.app/api/auth/current_user', {
-        credentials: 'include'
-      });
-      const user = await response.json();
-      console.log(user);
-    })();
-  }, []);
-
   return (
     <Link to='https://breen-team-backend.vercel.app/api/auth/google' id='logInButton'>
       <svg
