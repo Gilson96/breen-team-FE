@@ -10,16 +10,13 @@ export const getScoresByGameId = async (
   return response.json();
 };
 
-// export const getScoresByScoreId = async (
-//   page: number,
-//   gameId: number,
-//   scoreId?: string | undefined
-// ): Promise<{ scores: Score[]; page: number }> => {
-//   const response = await fetch(
-//     `${BASE_URL}games/${gameId}/scores${scoreId ? `/${scoreId}` : `?p=${page}`}`
-//   );
-//   return response.json();
-// };
+export const getScoresByGameAndScoreId = async (
+  gameId: number,
+  scoreId: number
+): Promise<{ scores: Score[]; page: number }> => {
+  const response = await fetch(`${BASE_URL}games/${gameId}/scores/${scoreId}`);
+  return response.json();
+};
 
 export const submitScore = async (
   gameId: number,

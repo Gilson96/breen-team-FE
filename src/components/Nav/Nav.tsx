@@ -26,7 +26,7 @@ const Nav = ({ theme = 'default', hidden }: NavProps) => {
         </button>
       )}
       <NavLink to='/'>Home</NavLink>
-      <NavLink to='/leaderboards'>Leaderboards</NavLink>
+      <NavLink to='/leaderboards/1'>Leaderboards</NavLink>
       <NavLink to='/games'>Games</NavLink>
     </nav>
   );

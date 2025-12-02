@@ -25,7 +25,9 @@ const LeaderboardPage = () => {
           {data!.games
             .sort((a, b) => a.game_id - b.game_id)
             .map(({ game_id, name }) => (
-              <NavLink to={`/leaderboards/${game_id || 1}`}>{name}</NavLink>
+              <NavLink to={`/leaderboards/${game_id}`} key={game_id}>
+                {name}
+              </NavLink>
             ))}
         </div>
         <ScoreList />

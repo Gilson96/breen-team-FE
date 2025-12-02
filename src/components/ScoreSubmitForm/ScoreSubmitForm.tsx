@@ -42,7 +42,7 @@ const ScoreSubmitForm = ({ gameId, score }: ScoreSubmitFormProps) => {
     return (
       <>
         <span>Score submitted!</span>
-        <ArrowLink to={`/leaderboards/${data.score.score_id}`}>View Your Score</ArrowLink>
+        <ArrowLink to={`/leaderboards/${gameId}/${data.score.score_id}`}>View Your Score</ArrowLink>
       </>
     );
   }

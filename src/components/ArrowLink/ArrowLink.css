@@ -10,4 +10,14 @@
     color: var(--snow-storm-light);
     border-color: var(--snow-storm-light);
   }
+
+  &.dark {
+    color: var(--frost-dark-blue);
+    border-color: var(--frost-dark-blue);
+
+    &:hover {
+      color: var(--frost-pale-blue);
+      border-color: var(--frost-pale-blue);
+    }
+  }
 }

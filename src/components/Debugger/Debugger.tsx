@@ -126,9 +126,9 @@ const Minesweeper = () => {
     <main className='minesweeper'>
       <div className='minesweeper__title'>
         <h1>Debugger</h1>
-        <button onClick={() => setShowSettings(true)}>
+        {/* <button onClick={() => setShowSettings(true)}>
           <Sliders2 />
-        </button>
+        </button> */}
         {showSettings && (
           <Modal onClose={() => setShowSettings(false)}>
             <h2>Difficulty</h2>
