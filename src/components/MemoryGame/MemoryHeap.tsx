@@ -1,87 +1,140 @@
-// import { useEffect, useState } from 'react';
-// import type { CardProps } from '../../types';
-// import { cards } from './cards';
-// import { arrayShuffle } from 'array-shuffle';
-// import Card from './Card';
-// import cardBack from '../../../public/memoryGame/back_card.png';
-
-// const MemoryHeap = () => {
-//   const [deck, setDeck] = useState<CardProps[]>(cards);
-//   const [restartGame, setRestartGame] = useState(false);
-//   const [firstFlip, setFirstFlip] = useState<CardProps | null>(null);
-//   const [secondFlip, setSecondFlip] = useState<CardProps | null>(null);
-
-//   useEffect(() => {
-//     game();
-//     setRestartGame(false);
-//   }, [restartGame]);
-
-//   const game = () => {
-//     const shuffleCards = arrayShuffle(cards);
-//     setDeck(shuffleCards);
-//   };
-
-//   const resetValues = () => {
-//     setFirstFlip(null);
-//     setSecondFlip(null);
-//   };
-
-//   const handleFlip = (card: CardProps) => {
-//     if (firstFlip) {
-//       setSecondFlip(card);
-//     } else {
-//       setFirstFlip(card);
-//     }
-//   };
-
-//   if (firstFlip !== null && secondFlip !== null) {
-//     if (firstFlip?.src === secondFlip?.src) {
-//       setDeck(prev => {
-//         return prev.map(card => {
-//           if (card.src === firstFlip.src) {
-//             return {
-//               ...card,
-//               matched: true
-//             };
-//           } else {
-//             return card;
-//           }
-//         });
-//       });
-//       resetValues();
-//     } else {
-//       setTimeout(() => resetValues(), 400);
-//     }
-//   }
-
-//   return (
-//     <main className='flex h-full w-full flex-col items-center justify-center'>
-//       <div>
-//         <p>Memory heap</p>
-//         <button
-//           onClick={() => {
-//             setRestartGame(true);
-//           }}
-//         ></button>
-//       </div>
-//       <div className='grid grid-cols-3'>
-//         {deck.map(card => (
-//           <Card
-//             card={card}
-//             handleFlip={handleFlip}
-//             cardBack={cardBack}
-//             flipped={card === firstFlip || card === secondFlip || card.matched}
-//           />
-//         ))}
-//       </div>
-//     </main>
-//   );
-// };
-
-// export default MemoryHeap;
+import { useEffect, useState } from 'react';
+import type { CardProps } from '../../types';
+import { cards } from './cards';
+import { arrayShuffle } from 'array-shuffle';
+import Card from './Card';
+import cardBack from '../../../public/memoryGame/back_card.png';
+import './MemoryHeap.css';
+import { useInterval } from 'usehooks-ts';
+import Modal from '../Modal/Modal';
+import ScoreSubmitForm from '../ScoreSubmitForm/ScoreSubmitForm';
+import { FaClock } from 'react-icons/fa6';
+import Nav from '../Nav/Nav';
 
 const MemoryHeap = () => {
-  return <h1>Memory Heap Component</h1>;
-};
+  const [deck, setDeck] = useState<CardProps[]>(cards);
+  const [restartGame, setRestartGame] = useState(false);
+  const [firstFlip, setFirstFlip] = useState<CardProps | null>(null);
+  const [secondFlip, setSecondFlip] = useState<CardProps | null>(null);
+  const [timer, setTimer] = useState(0);
+  const [delay, setDelay] = useState<number>(200);
+  const [playGame, setPlayGame] = useState(false);
+  const [score, setScore] = useState(0);
+  const [showScoreSubmit, setShowScoreSubmit] = useState(false);
+
+  const game = () => {
+    const shuffleCards = arrayShuffle(cards);
+    setDeck(shuffleCards);
+  };
+
+  const resetValues = () => {
+    setFirstFlip(null);
+    setSecondFlip(null);
+  };
+
+  const handleFlip = (card: CardProps) => {
+    if (firstFlip) {
+      setSecondFlip(card);
+    } else {
+      setFirstFlip(card);
+    }
+  };
+
+  useInterval(
+    () => {
+      setTimer(timer + 1);
+    },
+    playGame ? delay : null
+  );
+
+  useEffect(() => {
+    resetValues();
+    game();
+    setRestartGame(false);
+    setTimer(0);
+  }, [restartGame]);
+
+  useEffect(() => {
+    let flipCardBack: number;
+
+    if (deck.every(card => card.matched === true)) {
+      setScore(timer);
+      setPlayGame(false);
+      setShowScoreSubmit(true);
+    }
+
+    if (firstFlip?.src === secondFlip?.src) {
+      setDeck(prev => {
+        return prev.map(card => {
+          if (card.src === firstFlip?.src) {
+            return {
+              ...card,
+              matched: true
+            };
+          } else {
+            return card;
+          }
+        });
+      });
+      resetValues();
+    } else {
+      flipCardBack = setTimeout(() => resetValues(), 1000);
+    }
+
+    return () => clearTimeout(flipCardBack);
+  }, [firstFlip, secondFlip]);
+
+  return (
+    <main className='game-container'>
+      <div className='game-header'>
+        <h1 className='game-title'>Memory heap</h1>
+        <div className='game-options'>
+          <button
+            className='game-button'
+            onClick={() => {
+              setPlayGame(true);
+            }}
+          >
+            Play game
+          </button>
+          <button
+            className='game-button'
+            onClick={() => {
+              setRestartGame(true);
+            }}
+          >
+            Restart game
+          </button>
+          <span className='game-timer'>
+            <p className='timer'>{timer}</p>
+            <FaClock />
+          </span>
+        </div>
+      </div>
+      <div className='card-container'>
+        {showScoreSubmit ? (
+          <Modal onClose={() => setShowScoreSubmit(false)}>
+            <h2>Submit your score!</h2>
+            <h3>Finished in {timer} seconds!</h3>
+            <ScoreSubmitForm gameId={3} score={score} />
+          </Modal>
+        ) : (
+          deck.map(card => (
+            <Card
+              card={card}
+              handleFlip={handleFlip}
+              cardBack={cardBack}
+              playGame={playGame}
+              flipped={card === firstFlip || card === secondFlip || card.matched}
+            />
+          ))
+        )}
+      </div>
+      <div className='nav-bar'>
+        <Nav />
+      </div>
+    </main>
+  );
+}
 
 export default MemoryHeap;
