@@ -1,7 +1,7 @@
-import type { KAPLAYCtx } from 'kaplay';
+import type { KaboomCtx } from 'kaboom';
 import { spawnFloor } from './spawnObjects/spawnFloor';
 
-export function floorAnim(k: KAPLAYCtx) {
+export function floorAnim(k: KaboomCtx) {
   const [firstTile, secondTile] = spawnFloor(k);
   const floorTiles = [{ speed: -400, sections: [firstTile, secondTile] }];
 

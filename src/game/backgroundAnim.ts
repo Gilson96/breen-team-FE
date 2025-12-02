@@ -1,14 +1,14 @@
-import type { KAPLAYCtx } from 'kaplay';
+import type { KaboomCtx } from 'kaboom';
 import { spawnBackground } from './spawnObjects/spawnBackground';
 
-export function backgroundAnim(k: KAPLAYCtx) {
+export function backgroundAnim(k: KaboomCtx) {
   const [firstTile, secondTile] = spawnBackground(k);
   const backgroundTiles = [{ speed: -100, sections: [firstTile, secondTile] }];
 
   k.onUpdate(() => {
     for (const tile of backgroundTiles) {
       if (tile.sections[1].pos.x < 0) {
-        tile.sections[0].moveTo(tile.sections[1].pos.x + k.width(), k.height() - 50);
+        tile.sections[0].moveTo(tile.sections[1].pos.x + k.width(), k.height());
         const repositionTile = tile.sections.shift();
         tile.sections.push(repositionTile!);
       }

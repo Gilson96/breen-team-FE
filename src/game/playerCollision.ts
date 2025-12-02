@@ -1,8 +1,8 @@
-import type { AudioPlay, KAPLAYCtx, GameObj } from 'kaplay';
+import type { AudioPlay, KaboomCtx, GameObj } from 'kaboom';
 import { playcatchKnifeSound } from './audio/playAudio';
 
 export function playerCollision(
-  k: KAPLAYCtx,
+  k: KaboomCtx,
   player: GameObj,
   scoreLabel: GameObj,
   music: AudioPlay,
@@ -21,11 +21,7 @@ export function playerCollision(
     scoreLabel.font = 'font';
   });
 
-  player.onCollide('groundObstacle', () => {
-    k.go('gameOver', music, running, scoreLabel.value);
-  });
-
-  player.onCollide('topObstacle', () => {
+  player.onCollide('obstacle', () => {
     k.go('gameOver', music, running, scoreLabel.value);
   });
 }

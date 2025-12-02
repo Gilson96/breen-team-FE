@@ -1,6 +1,6 @@
-import type { KAPLAYCtx } from 'kaplay';
+import type { KaboomCtx } from 'kaboom';
 
-export function spawnMainMenuImage(k: KAPLAYCtx) {
+export function spawnMainMenuImage(k: KaboomCtx) {
   k.add([
     k.sprite('mainMenuImage'),
     k.pos(k.width() / 2 + 15, k.height() / 2),

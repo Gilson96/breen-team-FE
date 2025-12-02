@@ -1,4 +1,4 @@
-import type { KAPLAYCtx } from 'kaplay';
+import type { KaboomCtx } from 'kaboom';
 
 import { playMusic, playRunningSound } from '../audio/playAudio.ts';
 
@@ -11,10 +11,10 @@ import { spawnObstacles } from '../spawnObjects/spawnObstacles.ts';
 import { spawnKnives } from '../spawnObjects/spawnKnives.ts';
 import { floorAnim } from '../floorAnim';
 import { backgroundAnim } from '../backgroundAnim.ts';
-import { spawnCages } from '../spawnObjects/spawnCages.ts';
-import { spawnTorch } from '../spawnObjects/spawnTorches.ts';
+import { spawnMiddlegroundProps } from '../spawnObjects/spawnMiddlegroundProps.ts';
+import { spawnBackgroundProps } from '../spawnObjects/spawnBackgroundProps.ts';
 
-export function playGame(k: KAPLAYCtx) {
+export function playGame(k: KaboomCtx) {
   k.scene('game', () => {
     const music = playMusic(k);
     const running = playRunningSound(k);
@@ -41,7 +41,7 @@ export function playGame(k: KAPLAYCtx) {
     floorAnim(k);
     spawnObstacles(k);
     spawnKnives(k);
-    spawnCages(k);
-    spawnTorch(k);
+    spawnMiddlegroundProps(k);
+    spawnBackgroundProps(k);
   });
 }

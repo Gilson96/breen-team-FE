@@ -1,6 +1,6 @@
-import type { KAPLAYCtx } from 'kaplay';
+import type { KaboomCtx } from 'kaboom';
 
-export function spawnPlayer(k: KAPLAYCtx) {
+export function spawnPlayer(k: KaboomCtx) {
   return k.add([
     k.sprite('player', { anim: 'run' }),
     k.pos(150, k.height() - 50),
