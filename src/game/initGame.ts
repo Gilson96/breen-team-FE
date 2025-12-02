@@ -1,5 +1,5 @@
 import type { RefObject } from 'react';
-import initKaplay from './kaplayCtx';
+import initKaboom from './KaboomCtx.ts';
 
 import { loadSprites } from './loadGameSprites';
 import { loadAudio } from './audio/loadAudio.ts';
@@ -11,7 +11,7 @@ export default function initGame(
   gameRef: RefObject<HTMLCanvasElement>,
   setScore: (score: number) => void
 ): () => void {
-  const k = initKaplay(gameRef);
+  const k = initKaboom(gameRef);
 
   loadSprites(k);
   loadAudio(k);

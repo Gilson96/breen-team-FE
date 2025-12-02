@@ -1,14 +1,16 @@
-import Nav from '../components/Nav/Nav';
-import ScoreList from '../components/ScoreList/ScoreList';
-import Button from '../components/Button/Button';
+import { useParams } from 'react-router';
 import './LeaderboardPage.css';
+import Heading from '../components/Heading/Heading';
+import ScoreList from '../components/ScoreList/ScoreList';
+import Nav from '../components/Nav/Nav';
 
 const LeaderboardPage = () => {
+  const { scoreId } = useParams();
+
   return (
     <main className='leaderboard'>
-      <h1 className='leaderboard__title'>Leaderboard</h1>
+      <Heading>{scoreId ? 'Your Score' : 'Top Scores'}</Heading>
       <ScoreList />
-      <Button>Load More Scores</Button>
       <Nav />
     </main>
   );

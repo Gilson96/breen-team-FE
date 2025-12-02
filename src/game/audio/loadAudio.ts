@@ -1,6 +1,6 @@
-import type { KAPLAYCtx } from 'kaplay';
+import type { KaboomCtx } from 'kaboom';
 
-export function loadAudio(k: KAPLAYCtx) {
+export function loadAudio(k: KaboomCtx) {
   k.loadSound('music', './sound/music.mp3');
   k.loadSound('gameOverSound', './sound/gameOverSound.mp3');
   k.loadSound('runningSound', './sound/runningSound.mp3');

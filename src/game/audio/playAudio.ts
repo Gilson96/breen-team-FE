@@ -1,6 +1,6 @@
-import type { KAPLAYCtx } from "kaplay";
+import type { KaboomCtx } from "kaboom";
 
-export function playMusic(k: KAPLAYCtx) {
+export function playMusic(k: KaboomCtx) {
   return k.play('music', {
     loop: true,
     volume: 0.1,
@@ -8,7 +8,7 @@ export function playMusic(k: KAPLAYCtx) {
   });
 }
 
-export function playgameOver(k: KAPLAYCtx) {
+export function playgameOver(k: KaboomCtx) {
   return k.play('gameOverSound', {
     loop: false,
     volume: 0.1,
@@ -16,7 +16,7 @@ export function playgameOver(k: KAPLAYCtx) {
   });
 }
 
-export function playRunningSound(k: KAPLAYCtx) {
+export function playRunningSound(k: KaboomCtx) {
   return k.play('runningSound', {
     loop: true,
     volume: 0.1,
@@ -25,7 +25,7 @@ export function playRunningSound(k: KAPLAYCtx) {
 }
 
 
-export function playcatchKnifeSound(k: KAPLAYCtx) {
+export function playcatchKnifeSound(k: KaboomCtx) {
   return k.play('catchKnifeSound', {
     loop: false,
     volume: 0.1,
@@ -33,7 +33,7 @@ export function playcatchKnifeSound(k: KAPLAYCtx) {
   });
 }
 
-export function playbuttonClick(k: KAPLAYCtx) {
+export function playbuttonClick(k: KaboomCtx) {
   return k.play('buttonClick', {
     loop: false,
     volume: 0.1,

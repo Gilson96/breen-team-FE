@@ -6,10 +6,5 @@
   align-items: center;
   justify-content: center;
   gap: 2rem;
-
-  .games__title {
-    color: var(--snow-storm-dark);
-    text-shadow: var(--block-shadow);
-    font-size: 3rem;
-  }
+  padding-bottom: 8rem;
 }
