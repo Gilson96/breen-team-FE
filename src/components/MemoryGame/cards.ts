@@ -1,9 +1,9 @@
-import bat from '../../../public/memoryGame/bat.png';
-import cave from '../../../public/memoryGame/cave.png';
-import knife from '../../../public/memoryGame/knife.png';
-import orc from '../../../public/memoryGame/orc.png';
-import rock from '../../../public/memoryGame/rock.png';
-import shield from '../../../public/memoryGame/shield.png';
+const bat = './memoryGame/bat.png';
+const cave = './memoryGame/cave.png';
+const knife = './memoryGame/knife.png';
+const orc = './memoryGame/orc.png';
+const rock = './memoryGame/rock.png';
+const shield = './memoryGame/shield.png';
 
 export const cards = [
   { id: 1, src: bat, matched: false },

@@ -12,7 +12,7 @@
   align-items: center;
   padding: 2% 0%;
   gap: 5%;
-  background-image: url('../../../public/background.png');
+  background-image: url('./background.png');
 }
 
 .game-header {
@@ -46,7 +46,7 @@
   color: white;
   padding: 0% 2%;
   box-shadow: 10px 5px 5px black;
-  background-image: url('../../../public/buttonImage.png');
+  background-image: url('./buttonImage.png');
 }
 
 .game-timer {
@@ -75,7 +75,7 @@
 }
 
 .card-back {
-  background-image: url('../../../public/mainMenuImage.png');
+  background-image: url('./mainMenuImage.png');
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;

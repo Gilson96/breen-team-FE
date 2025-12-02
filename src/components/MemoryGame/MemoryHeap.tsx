@@ -3,7 +3,6 @@ import type { CardProps } from '../../types';
 import { cards } from './cards';
 import { arrayShuffle } from 'array-shuffle';
 import Card from './Card';
-import cardBack from '../../../public/memoryGame/back_card.png';
 import './MemoryHeap.css';
 import { useInterval } from 'usehooks-ts';
 import Modal from '../Modal/Modal';
@@ -126,7 +125,6 @@ const MemoryHeap = () => {
             <Card
               card={card}
               handleFlip={handleFlip}
-              cardBack={cardBack}
               playGame={playGame}
               flipped={card === firstFlip || card === secondFlip || card.matched}
             />
@@ -138,6 +136,6 @@ const MemoryHeap = () => {
       </div>
     </main>
   );
-}
+};
 
 export default MemoryHeap;

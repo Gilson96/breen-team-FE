@@ -20,7 +20,6 @@ export type DebuggerCellData = {
 export type CardProps = {
   id?: number;
   src?: string;
-  cardBack?: string;
   card?: CardProps;
   matched?: boolean;
   flipped?: boolean;

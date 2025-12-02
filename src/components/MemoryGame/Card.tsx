@@ -1,7 +1,7 @@
 import { motion } from 'motion/react';
 import type { CardProps } from '../../types';
 
-const Card = ({ card, playGame, handleFlip, disabled, cardBack, flipped }: CardProps) => {
+const Card = ({ card, playGame, handleFlip, disabled, flipped }: CardProps) => {
   const handleCardFlip = () => {
     if (!disabled) {
       handleFlip!(card!);
