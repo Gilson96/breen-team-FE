@@ -138,6 +138,6 @@ const MemoryHeap = () => {
       </div>
     </main>
   );
-};
+}
 
 export default MemoryHeap;

@@ -10,3 +10,6 @@ body {
   min-height: 100vh;
   background-color: var(--polar-night-darker);
 }
+a {
+  text-decoration: none;
+}

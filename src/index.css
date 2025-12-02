@@ -16,7 +16,8 @@
   --aurora-yellow: #ebcb8b;
   --aurora-green: #a3be8c;
   --aurora-purple: #b48ead;
-  --block-shadow: 5px 5px 0 rgba(0, 0, 0, 1);
+  --block-shadow: 5px 5px 0 rgb(0, 0, 0, 1);
+  --text-shadow: 3px 3px 0 rgba(0, 0, 0, 1);
 }
 html,
 body,
@@ -141,4 +142,7 @@ q:after {
 table {
   border-collapse: collapse;
   border-spacing: 0;
+}
+button:hover {
+  background-color: inherit;
 }

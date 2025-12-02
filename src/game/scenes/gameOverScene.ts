@@ -1,9 +1,9 @@
-import type { KAPLAYCtx } from 'kaplay';
+import type { KaboomCtx } from 'kaboom';
 import { playgameOver } from '../audio/playAudio.ts';
 import { addButton } from '../button.ts';
 import { spawnGameOverImage } from '../spawnObjects/spawnGameOverImage.ts';
 
-export function gameOver(k: KAPLAYCtx, setScore: (score: number) => void) {
+export function gameOver(k: KaboomCtx, setScore: (score: number) => void) {
   k.scene('gameOver', (music, running, score) => {
     music.paused = !music.paused;
     running.paused = true;

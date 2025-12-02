@@ -1,0 +1,28 @@
+.userProfile {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 70%;
+  gap: 1rem;
+  background-color: rgba(255, 255, 255, 0.3);
+  padding: 3rem;
+  backdrop-filter: blur(4px);
+  box-shadow: var(--block-shadow);
+
+  .profileHeader {
+    display: flex;
+    width: 100%;
+    align-items: center;
+    justify-content: space-between;
+
+    .avatar {
+      border: solid 0.5rem var(--snow-storm-light);
+      border-radius: 50%;
+      box-shadow: var(--block-shadow);
+    }
+    h2 {
+      font-size: 3rem;
+    }
+  }
+}

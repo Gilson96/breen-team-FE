@@ -1,17 +1,22 @@
-import type { KAPLAYCtx } from 'kaplay';
+import type { KaboomCtx } from 'kaboom';
 
-export function loadSprites(k: KAPLAYCtx) {
+export function loadSprites(k: KaboomCtx) {
   k.loadFont('font', './PixelifySans.ttf');
 
   k.loadSprite('floorSprite', './floor.png');
   k.loadSprite('background', './background.png');
-  k.loadSprite('backgroundObject', './cage.png');
-  k.loadSprite('groundObstacle', './bigRock.png');
-  k.loadSprite('topObstacle', './stalactite.png');
+  k.loadSprite('cage', './cage.png');
+  k.loadSprite('bigRockObstacle', './bigRock.png');
+  k.loadSprite('smallRockObstacle', './smallRock.png');
+  k.loadSprite('stalactiteObstacle', './stalactite.png');
   k.loadSprite('mainMenuImage', './mainMenuImage.png');
   k.loadSprite('buttonImage', './buttonImage.png');
   k.loadSprite('labelImage', './labelImage.png');
   k.loadSprite('gameOverImage', './gameOverImage.png');
+  k.loadSprite('column', './column.png');
+  k.loadSprite('gate', './gate.png');
+  k.loadSprite('barricade', './barricade.png');
+  k.loadSprite('middlegroundsStalactite', './middlegroundsStalactite.png');
 
   k.loadSprite('torch', './torch.png', {
     sliceX: 4,
