@@ -174,7 +174,7 @@ const Minesweeper = () => {
         <Modal onClose={() => setShowScoreSubmit(false)}>
           <h3>Finished in {time} seconds!</h3>
           <p>Difficulty: {difficulty}</p>
-          <ScoreSubmitForm gameId={1} score={time} />
+          <ScoreSubmitForm gameId={2} score={time} />
         </Modal>
       )}
       <Nav theme='debugger' hidden />
