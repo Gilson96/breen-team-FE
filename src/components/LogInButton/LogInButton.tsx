@@ -7,8 +7,11 @@ const LogInButton = () => {
     console.log('UseEffect running...');
     (async () => {
       const response = await fetch('https://breen-team-backend.vercel.app/api/auth/current_user', {
-        method: 'GET',
-        credentials: 'include'
+        mode: 'cors',
+        credentials: 'include',
+        headers: {
+          'Content-Type': 'application/json'
+        }
       });
       const user = await response.json();
       console.log(user);
