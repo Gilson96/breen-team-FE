@@ -162,11 +162,6 @@ const Minesweeper = () => {
             <MinesweeperCell
               cell={cell}
               key={cell.id}
-
-src/components/Debugger/Debugger.tsx:3:10 - error TS6133: 'Sliders2' is declared but its value is never read.
-
-3 import { Sliders2, Flag, Clock } from '@nsmr/pixelart-react';
-           ~~~~~~~~
               leftClickHandler={handleLeftClick}
               rightClickHandler={handleRightClick}
             />
