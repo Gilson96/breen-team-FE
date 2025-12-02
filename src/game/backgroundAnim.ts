@@ -8,7 +8,7 @@ export function backgroundAnim(k: KaboomCtx) {
   k.onUpdate(() => {
     for (const tile of backgroundTiles) {
       if (tile.sections[1].pos.x < 0) {
-        tile.sections[0].moveTo(tile.sections[1].pos.x + k.width(), k.height() - 50);
+        tile.sections[0].moveTo(tile.sections[1].pos.x + k.width(), k.height());
         const repositionTile = tile.sections.shift();
         tile.sections.push(repositionTile!);
       }

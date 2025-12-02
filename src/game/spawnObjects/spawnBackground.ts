@@ -3,19 +3,17 @@ import type { KaboomCtx } from 'kaboom';
 export function spawnBackground(k: KaboomCtx) {
   const firstTile = k.add([
     k.sprite('background'),
-    k.pos(0, k.height() - 50),
-    // k.body({ isStatic: true }),
+    k.pos(0, k.height()),
     k.anchor('botleft'),
-    k.scale(k.vec2(2)),
+    k.scale(2.01, 2),
     'background'
   ]);
 
   const secondTile = k.add([
     k.sprite('background'),
-    k.pos(k.width(), k.height() - 50),
-    // k.body({ isStatic: true }),
+    k.pos(k.width(), k.height()),
     k.anchor('botleft'),
-    k.scale(k.vec2(2)),
+    k.scale(2.01, 2),
     'background'
   ]);
 

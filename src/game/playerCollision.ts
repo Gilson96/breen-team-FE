@@ -21,11 +21,7 @@ export function playerCollision(
     scoreLabel.font = 'font';
   });
 
-  player.onCollide('groundObstacle', () => {
-    k.go('gameOver', music, running, scoreLabel.value);
-  });
-
-  player.onCollide('topObstacle', () => {
+  player.onCollide('obstacle', () => {
     k.go('gameOver', music, running, scoreLabel.value);
   });
 }

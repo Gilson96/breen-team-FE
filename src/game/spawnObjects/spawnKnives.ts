@@ -17,7 +17,7 @@ export function knife(k: KaboomCtx, spacing: number) {
 
 export function spawnKnives(k: KaboomCtx) {
   k.wait(k.rand(1, 3), () => {
-    const amount = k.randi(1, 4);
+    const amount = k.randi(0, 3);
 
     knife(k, 0);
     if (amount > 1) {
