@@ -5,7 +5,7 @@ import Nav from '../components/Nav/Nav';
 import UserProfile from '../components/UserProfile/UserProfile';
 import './ProfilePage.css';
 
-const AccountPage = () => {
+const ProfilePage = () => {
   const [searchParams] = useSearchParams();
 
   useEffect(() => {
@@ -31,4 +31,4 @@ const AccountPage = () => {
   );
 };
 
-export default AccountPage;
+export default ProfilePage;
