@@ -20,6 +20,7 @@ const MemoryHeap = () => {
   const [playGame, setPlayGame] = useState(false);
   const [score, setScore] = useState(0);
   const [showScoreSubmit, setShowScoreSubmit] = useState(false);
+  const [disabled, setDisabled] = useState(false);
 
   const game = () => {
     const shuffleCards = arrayShuffle(cards);
@@ -29,10 +30,11 @@ const MemoryHeap = () => {
   const resetValues = () => {
     setFirstFlip(null);
     setSecondFlip(null);
+    setDisabled(false);
   };
 
   const handleFlip = (card: CardProps) => {
-    if (firstFlip) {
+    if (firstFlip !== null) {
       setSecondFlip(card);
     } else {
       setFirstFlip(card);
@@ -65,22 +67,25 @@ const MemoryHeap = () => {
       setTimer(0);
     }
 
-    if (firstFlip?.src === secondFlip?.src) {
-      setDeck(prev => {
-        return prev.map(card => {
-          if (card.src === firstFlip?.src) {
-            return {
-              ...card,
-              matched: true
-            };
-          } else {
-            return card;
-          }
+    if (firstFlip !== null || secondFlip !== null) {
+      setDisabled(true);
+      if (firstFlip?.src === secondFlip?.src) {
+        setDeck(prev => {
+          return prev.map(card => {
+            if (card.src === firstFlip?.src) {
+              return {
+                ...card,
+                matched: true
+              };
+            } else {
+              return card;
+            }
+          });
         });
-      });
-      resetValues();
-    } else {
-      flipCardBack = setTimeout(() => resetValues(), 1000);
+        resetValues();
+      } else {
+        flipCardBack = setTimeout(() => resetValues(), 1000);
+      }
     }
 
     return () => clearTimeout(flipCardBack);
@@ -125,6 +130,7 @@ const MemoryHeap = () => {
             <Card
               card={card}
               handleFlip={handleFlip}
+              disabled={disabled}
               playGame={playGame}
               flipped={card === firstFlip || card === secondFlip || card.matched}
             />
