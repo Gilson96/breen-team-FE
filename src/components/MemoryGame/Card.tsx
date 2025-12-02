@@ -1,3 +1,4 @@
+import { motion } from 'motion/react';
 import type { CardProps } from '../../types';
 
 const Card = ({ card, handleFlip, disabled, cardBack, flipped }: CardProps) => {
@@ -7,14 +8,20 @@ const Card = ({ card, handleFlip, disabled, cardBack, flipped }: CardProps) => {
     }
   };
 
-  return (
-    <div className='card'>
-      {flipped ? (
-        <img src={card?.src} className='card-front' alt='card front' />
-      ) : (
-        <img className='card-back' src={cardBack} onClick={handleCardFlip} alt='card back' />
-      )}
-    </div>
+  return flipped ? (
+    <motion.div
+      animate={{ rotateY: flipped ? 180 : 0 }}
+      transition={{ duration: 1 }}
+      style={{ backgroundImage: `url(${card?.src})` }}
+      className='card-front'
+    ></motion.div>
+  ) : (
+    <motion.div
+      animate={{ rotateY: flipped ? 180 : 0 }}
+      transition={{ duration: 1 }}
+      className='card-back'
+      onClick={handleCardFlip}
+    ></motion.div>
   );
 };
 

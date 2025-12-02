@@ -1,48 +1,84 @@
+@font-face {
+  font-family: lordOfRingsFont;
+  src: url(PixelifySans.ttf);
+}
+
 .game-container {
   display: flex;
-  justify-content: center;
-  height: 100%;
-  width: 100%;
+  justify-content: space-between;
+  height: 100vh;
+  width: 100vw;
   flex-direction: column;
   align-items: center;
-  padding: 2%;
+  padding: 2% 0%;
+  gap: 5%;
+  background-image: url('../../../public/background.png');
 }
 
 .game-header {
   display: flex;
-  height: 100%;
   width: 100%;
-  padding-bottom: 2%;
-  align-items: end;
+  align-items: center;
   justify-content: center;
   gap: 2%;
 }
 
 .game-title {
   font-size: 3rem;
-  color: lightcoral;
+  font-family: lordOfRingsFont;
+  color: #c67927;
 }
 
 .game-button {
   height: 2.5rem;
   width: auto;
   cursor: pointer;
+  color: white;
+  box-shadow: 10px 5px 5px black;
+  background-image: url('../../../public/buttonImage.png');
 }
 
 .card-container {
   display: grid;
   grid-template-columns: repeat(4, minmax(0, 1fr));
-  place-self: center;
-}
-
-.card {
-  border: 1px solid lightgray;
-  height: 10rem;
-  width: 10rem;
+  height: 100%;
+  width: 80%;
+  gap: 2%;
 }
 
 .card-front,
 .card-back {
+  border: 1px solid lightgray;
   height: 100%;
   width: 100%;
+  border-radius: 10px;
+  transform-style: preserve-3d;
+  cursor: pointer
+}
+
+.card-back {
+  background-image: url('../../../public/mainMenuImage.png');
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  position: relative;
+}
+
+.card-front {
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: auto;
+  background-size: contain;
+  position: relative;
+}
+
+@media only screen and (min-width: 600px) {
+  .card-front,
+  .card-back {
+    border: 1px solid lightgray;
+    height: 9rem;
+    width: 15rem;
+    border-radius: 10px;
+    transform-style: preserve-3d;
+  }
 }
