@@ -17,7 +17,7 @@ const ProfilePage = () => {
           Authorization: 'Bearer ' + localStorage.getItem('token')
         }
       });
-      const user = response.json();
+      const user = await response.json();
       console.log(user);
     })();
   }, [searchParams]);
