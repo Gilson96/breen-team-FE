@@ -8,8 +8,8 @@ import './MemoryHeap.css';
 import { useInterval } from 'usehooks-ts';
 import Modal from '../Modal/Modal';
 import ScoreSubmitForm from '../ScoreSubmitForm/ScoreSubmitForm';
-import { FaClock } from 'react-icons/fa6';
 import Nav from '../Nav/Nav';
+import { Clock } from '@nsmr/pixelart-react';
 
 const MemoryHeap = () => {
   const [deck, setDeck] = useState<CardProps[]>(cards);
@@ -59,8 +59,11 @@ const MemoryHeap = () => {
 
     if (deck.every(card => card.matched === true)) {
       setScore(timer);
+      resetValues();
+      game();
       setPlayGame(false);
       setShowScoreSubmit(true);
+      setTimer(0);
     }
 
     if (firstFlip?.src === secondFlip?.src) {
@@ -107,7 +110,7 @@ const MemoryHeap = () => {
           </button>
           <span className='game-timer'>
             <p className='timer'>{timer}</p>
-            <FaClock />
+            <Clock />
           </span>
         </div>
       </div>
@@ -115,7 +118,7 @@ const MemoryHeap = () => {
         {showScoreSubmit ? (
           <Modal onClose={() => setShowScoreSubmit(false)}>
             <h2>Submit your score!</h2>
-            <h3>Finished in {timer} seconds!</h3>
+            <h3>Finished in {score} seconds!</h3>
             <ScoreSubmitForm gameId={3} score={score} />
           </Modal>
         ) : (
