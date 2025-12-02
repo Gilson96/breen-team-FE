@@ -15,13 +15,12 @@
   }
 
   .scoreRow__rank {
-    width: 3rem;
+    width: 4rem;
   }
   .scoreRow__username {
-    max-width: 15rem;
-    flex-grow: 1;
+    flex: 1 1 0px;
   }
   .scoreRow__score {
-    flex-grow: 1;
+    flex: 1 1 0px;
   }
 }

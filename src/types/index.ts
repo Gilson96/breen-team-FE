@@ -5,6 +5,7 @@ export type Score = {
   username: string;
   game_id: string;
   created_on: string;
+  rank?: number;
 };
 
 export type DebuggerCellData = {
@@ -25,8 +26,8 @@ export type CardProps = {
   flipped?: boolean;
   disabled?: boolean;
   handleFlip?: (card: CardProps) => void;
-  playGame?: boolean
-}
+  playGame?: boolean;
+};
 
 export type Game = {
   game_id: number;

@@ -1,6 +1,6 @@
 import { useState, type SyntheticEvent } from 'react';
 import { useInterval } from 'usehooks-ts';
-import { Sliders2, Flag, Clock } from '@nsmr/pixelart-react';
+import { Flag, Clock } from '@nsmr/pixelart-react';
 import Nav from '../Nav/Nav';
 import Modal from '../Modal/Modal';
 import MinesweeperCell from '../DebuggerCell/DebuggerCell';
@@ -126,9 +126,9 @@ const Minesweeper = () => {
     <main className='minesweeper'>
       <div className='minesweeper__title'>
         <h1>Debugger</h1>
-        <button onClick={() => setShowSettings(true)}>
+        {/* <button onClick={() => setShowSettings(true)}>
           <Sliders2 />
-        </button>
+        </button> */}
         {showSettings && (
           <Modal onClose={() => setShowSettings(false)}>
             <h2>Difficulty</h2>
@@ -174,7 +174,7 @@ const Minesweeper = () => {
         <Modal onClose={() => setShowScoreSubmit(false)}>
           <h3>Finished in {time} seconds!</h3>
           <p>Difficulty: {difficulty}</p>
-          <ScoreSubmitForm gameId={1} score={time} />
+          <ScoreSubmitForm gameId={2} score={time} />
         </Modal>
       )}
       <Nav theme='debugger' hidden />

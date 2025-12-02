@@ -7,6 +7,11 @@
   box-shadow: var(--block-shadow);
   cursor: pointer;
   gap: 1rem;
+  position: fixed;
+  top: 1rem;
+  right: 1rem;
+  font-family: 'Jersey 25';
+  font-size: 1.25rem;
 
   svg {
     width: 30px;

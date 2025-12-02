@@ -19,9 +19,13 @@ const GameList = () => {
     return <Error>{error.message}</Error>;
   }
 
-  return data!.games.map(({ name }) => (
-    <HomeButton to={`/${name.toLowerCase().replaceAll(' ', '')}`}>{name}</HomeButton>
-  ));
+  return data!.games
+    .sort((a, b) => a.game_id - b.game_id)
+    .map(({ name, game_id }) => (
+      <HomeButton to={`/${name.toLowerCase().replaceAll(' ', '')}`} key={game_id}>
+        {name}
+      </HomeButton>
+    ));
 };
 
 export default GameList;
