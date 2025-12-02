@@ -15,7 +15,8 @@ const App = () => {
     <Routes>
       <Route element={<SquaresContainer />}>
         <Route path='/' element={<HomePage />} />
-        <Route path='/leaderboards/:scoreId?' element={<LeaderboardPage />} />
+        <Route path='/leaderboards/:gameId?' element={<LeaderboardPage />} />
+        {/* <Route path='/leaderboards/:gameId/:scoreId' element={<ProfilePage />} /> */}
         <Route path='/games' element={<GamesPage />} />
         <Route path='/profile' element={<ProfilePage />} />
         <Route path='*' element={<NotFoundPage />} />

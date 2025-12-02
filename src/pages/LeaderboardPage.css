@@ -7,4 +7,28 @@
   justify-content: center;
   gap: 2rem;
   padding: 2rem 0 8rem;
+
+  .gameSelection {
+    width: 70%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-top: 1rem;
+    a {
+      background-color: var(--snow-storm-dark);
+      color: var(--polar-night-darker);
+      padding: 0.5rem 1rem;
+      box-shadow: var(--block-shadow);
+
+      &.active {
+        background-color: var(--aurora-yellow);
+      }
+      &:active {
+        position: relative;
+        top: 5px;
+        left: 5px;
+        box-shadow: none;
+      }
+    }
+  }
 }

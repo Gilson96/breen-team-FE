@@ -1,15 +1,39 @@
-import { useParams } from 'react-router';
-import './LeaderboardPage.css';
+import { useParams, NavLink } from 'react-router';
+import { useQuery } from '@tanstack/react-query';
 import Heading from '../components/Heading/Heading';
 import ScoreList from '../components/ScoreList/ScoreList';
 import Nav from '../components/Nav/Nav';
+import Loading from '../components/Loading/Loading';
+import Error from '../components/Error/Error';
+import { getGames } from '../api';
+import './LeaderboardPage.css';
 
 const LeaderboardPage = () => {
-  const { scoreId } = useParams();
+  const { gameId } = useParams();
+
+  const { isLoading, isError, data, error } = useQuery({
+    queryKey: ['games'],
+    queryFn: getGames
+  });
+
+  if (isLoading) {
+    return <Loading>Loading games</Loading>;
+  }
+
+  if (isError) {
+    return <Error>{error.message}</Error>;
+  }
 
   return (
     <main className='leaderboard'>
-      <Heading>{scoreId ? 'Your Score' : 'Top Scores'}</Heading>
+      <Heading>Top Scores</Heading>
+      <div className='gameSelection'>
+        {data!.games
+          .sort((a, b) => a.game_id - b.game_id)
+          .map(({ game_id, name }) => (
+            <NavLink to={`/leaderboards/${game_id || 1}`}>{name}</NavLink>
+          ))}
+      </div>
       <ScoreList />
       <Nav />
     </main>
