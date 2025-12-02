@@ -5,7 +5,7 @@ import './ScoreRow.css';
 type ScoreRowProps = {
   score: Score;
   rank: number;
-  highlight: boolean;
+  highlight?: boolean;
 };
 
 const ScoreRow = ({ score: { username, score }, rank, highlight }: ScoreRowProps) => {

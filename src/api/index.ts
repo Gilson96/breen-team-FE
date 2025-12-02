@@ -1,17 +1,25 @@
 import type { Score, Game } from '../types';
 
 const BASE_URL = 'https://breen-team-backend.vercel.app/api/';
-// const BASE_URL = 'http://localhost:4000/api/';
 
-export const getScores = async (
+export const getScoresByGameId = async (
   page: number,
-  scoreId: string | undefined
+  gameId: number
 ): Promise<{ scores: Score[]; page: number }> => {
-  const response = await fetch(
-    `${BASE_URL}games/1/scores${scoreId ? `/${scoreId}` : `?p=${page}`}`
-  );
+  const response = await fetch(`${BASE_URL}games/${gameId}/scores?p=${page}`);
   return response.json();
 };
+
+// export const getScoresByScoreId = async (
+//   page: number,
+//   gameId: number,
+//   scoreId?: string | undefined
+// ): Promise<{ scores: Score[]; page: number }> => {
+//   const response = await fetch(
+//     `${BASE_URL}games/${gameId}/scores${scoreId ? `/${scoreId}` : `?p=${page}`}`
+//   );
+//   return response.json();
+// };
 
 export const submitScore = async (
   gameId: number,
