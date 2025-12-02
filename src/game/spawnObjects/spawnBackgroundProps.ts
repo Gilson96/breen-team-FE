@@ -37,8 +37,6 @@ function column(k: KaboomCtx) {
 }
 
 export function spawnBackgroundProps(k: KaboomCtx, waitTime = 1) {
-  console.log(waitTime);
-
   const spawn = k.randi(0, 20);
   if (spawn > 9) waitTime = 3;
   k.wait(k.rand(waitTime, 5), () => {
