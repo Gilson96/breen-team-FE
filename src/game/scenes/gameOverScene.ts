@@ -5,7 +5,7 @@ import { spawnGameOverImage } from '../spawnObjects/spawnGameOverImage.ts';
 
 export function gameOver(k: KaboomCtx, setScore: (score: number) => void) {
   k.scene('gameOver', (music, running, score) => {
-    music.paused = !music.paused;
+    music.paused = true;
     running.paused = true;
     playgameOver(k);
 

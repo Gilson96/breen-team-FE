@@ -13,6 +13,7 @@ export default function initGame(
 ): () => void {
   const k = initKaboom(gameRef);
 
+
   loadSprites(k);
   loadAudio(k);
   mainMenu(k);

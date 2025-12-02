@@ -3,7 +3,7 @@ import type { KaboomCtx } from "kaboom";
 export function playMusic(k: KaboomCtx) {
   return k.play('music', {
     loop: true,
-    volume: 0.1,
+    volume: 0.01,
     paused: false
   });
 }
