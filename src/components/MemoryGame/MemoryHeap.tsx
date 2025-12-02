@@ -17,7 +17,7 @@ const MemoryHeap = () => {
   const [firstFlip, setFirstFlip] = useState<CardProps | null>(null);
   const [secondFlip, setSecondFlip] = useState<CardProps | null>(null);
   const [timer, setTimer] = useState(0);
-  const [delay, setDelay] = useState<number>(500);
+  const [delay, setDelay] = useState<number>(200);
   const [playGame, setPlayGame] = useState(false);
   const [score, setScore] = useState(0);
   const [showScoreSubmit, setShowScoreSubmit] = useState(false);
@@ -116,7 +116,7 @@ const MemoryHeap = () => {
           <Modal onClose={() => setShowScoreSubmit(false)}>
             <h2>Submit your score!</h2>
             <h3>Finished in {timer} seconds!</h3>
-            <ScoreSubmitForm gameId={3} score={timer} />
+            <ScoreSubmitForm gameId={3} score={score} />
           </Modal>
         ) : (
           deck.map(card => (
