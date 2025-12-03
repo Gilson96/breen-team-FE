@@ -18,10 +18,9 @@ const MemoryHeap = () => {
   const [timer, setTimer] = useState(0);
   const [delay] = useState<number>(200);
   const [playGame, setPlayGame] = useState(false);
-  const [score, setScore] = useState(0);
   const [showScoreSubmit, setShowScoreSubmit] = useState(false);
   const [disabled, setDisabled] = useState(false);
-  const [flipCount, setFlipCount] = useState(22);
+  const [flipCount, setFlipCount] = useState(25);
   const [gameOver, setGameOver] = useState(false);
 
   const game = () => {
@@ -33,7 +32,6 @@ const MemoryHeap = () => {
     setFirstFlip(null);
     setSecondFlip(null);
     setDisabled(false);
-    setTimer(0);
   };
 
   const handleFlip = (card: CardProps) => {
@@ -58,7 +56,7 @@ const MemoryHeap = () => {
     game();
     setRestartGame(false);
     setTimer(0);
-    setFlipCount(22);
+    setFlipCount(25);
     setGameOver(false);
   }, [restartGame]);
 
@@ -66,12 +64,10 @@ const MemoryHeap = () => {
     let flipCardBack: number;
 
     if (deck.every(card => card.matched === true)) {
-      setScore(timer);
       resetValues();
       game();
       setPlayGame(false);
       setShowScoreSubmit(true);
-      setTimer(0);
     }
 
     if (firstFlip !== null && secondFlip !== null) {
@@ -107,8 +103,8 @@ const MemoryHeap = () => {
       return (
         <Modal onClose={() => setShowScoreSubmit(false)}>
           <h2>Submit your score!</h2>
-          <h3>Finished in {score} seconds!</h3>
-          <ScoreSubmitForm gameId={3} score={score} />
+          <h3>Finished in {timer} seconds!</h3>
+          <ScoreSubmitForm gameId={3} score={timer} />
         </Modal>
       );
     } else {
@@ -133,6 +129,7 @@ const MemoryHeap = () => {
           <div className='game-options'>
             <div className='game-button'>
               <button
+                disabled={flipCount === 0 ? true : false}
                 className='game-button-play'
                 onClick={() => {
                   setPlayGame(true);
