@@ -1,7 +1,7 @@
 import { type KaboomCtx } from 'kaboom';
 
 export function knife(k: KaboomCtx, spacing: number) {
-  k.add([
+  const knife = k.add([
     k.sprite('knife', { anim: 'run' }),
     k.pos(k.width() + spacing, k.height() - 250),
     k.scale(0.5),
@@ -13,6 +13,9 @@ export function knife(k: KaboomCtx, spacing: number) {
     k.offscreen({ destroy: true }),
     'knife'
   ]);
+  knife.onCollide('obstacle', () => {
+    k.destroy(knife);
+  });
 }
 
 export function spawnKnives(k: KaboomCtx) {
@@ -26,6 +29,7 @@ export function spawnKnives(k: KaboomCtx) {
     if (amount > 2) {
       knife(k, 200);
     }
+
     spawnKnives(k);
   });
 }

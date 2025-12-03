@@ -9,4 +9,6 @@ export function loadAudio(k: KaboomCtx) {
   k.loadSound('grunt', './sound/grunt.mp3');
   k.loadSound('jumpLanding', './sound/jumpLanding.mp3');
   k.loadSound('mainMenuMusic', './sound/mainMenuMusic.mp3');
+  k.loadSound('slide', './sound/slide.mp3');
+
 }
