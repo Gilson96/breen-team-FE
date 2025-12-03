@@ -13,5 +13,6 @@ export default function initKaboom(gameRef: RefObject<HTMLCanvasElement>) {
     crisp: true,
     maxFPS: 60,
     backgroundAudio: true
+    
   });
 }

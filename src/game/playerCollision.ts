@@ -6,7 +6,8 @@ export function playerCollision(
   player: GameObj,
   scoreLabel: GameObj,
   music: AudioPlay,
-  running: AudioPlay
+  running: AudioPlay,
+  state: { isMuted: boolean }
 ) {
   player.onCollide('scorePoint', () => {
     scoreLabel.value += 1;
@@ -14,7 +15,7 @@ export function playerCollision(
     scoreLabel.font = 'font';
   });
   player.onCollide('knife', (knife: GameObj) => {
-    playcatchKnifeSound(k);
+    if (!state.isMuted) playcatchKnifeSound(k);
     k.destroy(knife);
     scoreLabel.value += 10;
     scoreLabel.text = `SCORE: ${scoreLabel.value}`;

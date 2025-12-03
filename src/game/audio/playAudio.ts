@@ -1,9 +1,9 @@
-import type { KaboomCtx } from "kaboom";
+import type { KaboomCtx } from 'kaboom';
 
-export function playMusic(k: KaboomCtx) {
-  return k.play('music', {
+export function gameMusic(k: KaboomCtx) {
+  return k.play('gameMusic', {
     loop: true,
-    volume: 0.1,
+    volume: 0.09,
     paused: false
   });
 }
@@ -24,7 +24,6 @@ export function playRunningSound(k: KaboomCtx) {
   });
 }
 
-
 export function playcatchKnifeSound(k: KaboomCtx) {
   return k.play('catchKnifeSound', {
     loop: false,
@@ -37,6 +36,28 @@ export function playbuttonClick(k: KaboomCtx) {
   return k.play('buttonClick', {
     loop: false,
     volume: 0.1,
+    paused: false
+  });
+}
+
+export function grunt(k: KaboomCtx) {
+  return k.play('grunt', {
+    loop: false,
+    volume: 0.1,
+    paused: false
+  });
+}
+export function jumpLanding(k: KaboomCtx) {
+  return k.play('jumpLanding', {
+    loop: false,
+    volume: 0.3,
+    paused: false
+  });
+}
+export function mainMenuMusic(k: KaboomCtx) {
+  return k.play('mainMenuMusic', {
+    loop: false,
+    volume: 0.3,
     paused: false
   });
 }

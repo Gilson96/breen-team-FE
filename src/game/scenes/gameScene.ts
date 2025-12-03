@@ -1,6 +1,6 @@
 import type { KaboomCtx } from 'kaboom';
 
-import { playMusic, playRunningSound } from '../audio/playAudio.ts';
+import { gameMusic, playRunningSound } from '../audio/playAudio.ts';
 
 import { spawnPlayer } from '../spawnObjects/spawnPlayer.ts';
 import { playerInputs } from '../playerInputs.ts';
@@ -13,11 +13,19 @@ import { floorAnim } from '../floorAnim';
 import { backgroundAnim } from '../backgroundAnim.ts';
 import { spawnMiddlegroundProps } from '../spawnObjects/spawnMiddlegroundProps.ts';
 import { spawnBackgroundProps } from '../spawnObjects/spawnBackgroundProps.ts';
+import { muteButton } from '../muteButton.ts';
 
-export function playGame(k: KaboomCtx) {
+export function playGame(k: KaboomCtx, state: { isMuted: boolean }) {
   k.scene('game', () => {
-    const music = playMusic(k);
+    const music = gameMusic(k);
     const running = playRunningSound(k);
+
+    if (state.isMuted) {
+      music.paused = true;
+      running.paused = true;
+    }
+
+    muteButton(k, { music, running }, state);
 
     const scoreLabel = k.add([
       k.text('SCORE: 0'),
@@ -34,8 +42,8 @@ export function playGame(k: KaboomCtx) {
 
     const player = spawnPlayer(k);
 
-    playerInputs(k, player, running);
-    playerCollision(k, player, scoreLabel, music, running);
+    playerInputs(k, player, running, state);
+    playerCollision(k, player, scoreLabel, music, running, state);
 
     floorColision(k);
     floorAnim(k);

@@ -13,11 +13,13 @@ export default function initGame(
 ): () => void {
   const k = initKaboom(gameRef);
 
+  const state = { isMuted: false };
+
   loadSprites(k);
   loadAudio(k);
-  mainMenu(k);
-  playGame(k);
-  gameOver(k, setScore);
+  mainMenu(k, state);
+  playGame(k, state);
+  gameOver(k, setScore, state);
 
   k.go('mainMenu');
 
