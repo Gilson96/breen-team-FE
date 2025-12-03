@@ -15,12 +15,15 @@ import { spawnMiddlegroundProps } from '../spawnObjects/spawnMiddlegroundProps.t
 import { spawnBackgroundProps } from '../spawnObjects/spawnBackgroundProps.ts';
 import { muteButton } from '../muteButton.ts';
 
-export function playGame(k: KaboomCtx) {
+export function playGame(k: KaboomCtx, state: { isMuted: boolean }) {
   k.scene('game', () => {
     const music = playMusic(k);
     const running = playRunningSound(k);
 
-    const state = { isMuted: false };
+    if (state.isMuted) {
+      music.paused = true;
+      running.paused = true;
+    }
 
     muteButton(k, { music, running }, state);
 
@@ -39,9 +42,8 @@ export function playGame(k: KaboomCtx) {
 
     const player = spawnPlayer(k);
 
-
     playerInputs(k, player, running, state);
-    playerCollision(k, player, scoreLabel, music, running);
+    playerCollision(k, player, scoreLabel, music, running,state);
 
     floorColision(k);
     floorAnim(k);

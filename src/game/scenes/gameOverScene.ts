@@ -1,13 +1,18 @@
 import type { KaboomCtx } from 'kaboom';
 import { playgameOver } from '../audio/playAudio.ts';
-import { addButton } from '../button.ts';
+import { button } from '../button.ts';
 import { spawnGameOverImage } from '../spawnObjects/spawnGameOverImage.ts';
 
-export function gameOver(k: KaboomCtx, setScore: (score: number) => void) {
+export function gameOver(
+  k: KaboomCtx,
+  setScore: (score: number) => void,
+  state: { isMuted: boolean }
+) {
   k.scene('gameOver', (music, running, score) => {
     music.paused = true;
     running.paused = true;
-    playgameOver(k);
+
+    if (!state.isMuted) playgameOver(k);
 
     k.add([k.pos(0, 0), k.rect(1282, 720), k.color(0, 0, 0)]);
     spawnGameOverImage(k);
@@ -29,7 +34,7 @@ export function gameOver(k: KaboomCtx, setScore: (score: number) => void) {
       k.color(255, 153, 70)
     ]);
 
-    addButton(k, 'Main Menu', k.vec2(k.width() / 2, 400), 'mainMenu');
+    button(k, 'Main Menu', k.vec2(k.width() / 2, 400), 'mainMenu', state);
 
     setScore(score);
   });
