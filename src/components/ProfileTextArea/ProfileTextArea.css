@@ -1,0 +1,9 @@
+.profileTextArea {
+  width: 100%;
+  height: 100px;
+  background: transparent;
+  resize: vertical;
+  border: none;
+  outline: none;
+  overflow-y: scroll;
+}

@@ -4,9 +4,10 @@ import './ProfileTextArea.css';
 type ProfileTextAreaProps = {
   initialValue: string;
   setState: Dispatch<SetStateAction<string>>;
+  onBlur: () => void;
 };
 
-const ProfileTextArea = ({ initialValue, setState }: ProfileTextAreaProps) => {
+const ProfileTextArea = ({ initialValue, setState, onBlur }: ProfileTextAreaProps) => {
   const [text, setText] = useState(initialValue);
 
   useEffect(() => {
@@ -18,7 +19,15 @@ const ProfileTextArea = ({ initialValue, setState }: ProfileTextAreaProps) => {
     setState(e.target.value);
   };
 
-  return <textarea value={text} onChange={handleChange} />;
+  return (
+    <textarea
+      value={text}
+      onChange={handleChange}
+      onBlur={onBlur}
+      className='profileTextArea'
+      autoFocus
+    />
+  );
 };
 
 export default ProfileTextArea;
