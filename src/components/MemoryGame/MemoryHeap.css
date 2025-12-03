@@ -17,7 +17,7 @@
   align-items: center;
   justify-content: space-between;
   flex-direction: column;
-  gap: 3%;
+
 }
 
 .game-title {
@@ -27,7 +27,7 @@
 
 .game-instructions {
   color: white;
-  padding-top: 3px;
+
 }
 
 .game-options {
