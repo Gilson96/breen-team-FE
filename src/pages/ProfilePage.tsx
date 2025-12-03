@@ -12,7 +12,7 @@ const ProfilePage = () => {
     (async () => {
       const token = searchParams.get('token');
       if (token) localStorage.setItem('token', token);
-      const response = await fetch('https://breen-team-backend.vercel.app/jwt', {
+      const response = await fetch('https://breen-team-backend.vercel.app/api/users/profile', {
         headers: {
           Authorization: 'Bearer ' + localStorage.getItem('token')
         }
