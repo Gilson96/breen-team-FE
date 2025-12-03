@@ -33,3 +33,17 @@ export type Game = {
   game_id: number;
   name: string;
 };
+
+export type User = {
+  profile: {
+    avatar_url: string;
+    bio: string | null;
+    email: string;
+    username: string;
+  };
+  scores: {
+    '1'?: Score[];
+    '2'?: Score[];
+    '3'?: Score[];
+  };
+};
