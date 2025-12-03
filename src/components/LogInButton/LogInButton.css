@@ -23,7 +23,7 @@
   }
   &:active {
     top: calc(1rem + 5px);
-    left: calc(1rem + 5px);
+    right: calc(1rem + 5px);
     box-shadow: none;
   }
 }
