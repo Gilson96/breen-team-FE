@@ -8,8 +8,7 @@ const HomePage = () => {
       <div className='homePage__title'>
         <Orc />
         <h1>
-          Burnout
-          <br />
+          <span>Burnout</span>
           <span>Break</span>
         </h1>
       </div>

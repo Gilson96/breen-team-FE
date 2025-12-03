@@ -55,3 +55,9 @@
     animation: rotateRight 5s linear infinite;
   }
 }
+
+@media only screen and (max-width: 375px) {
+  .heading {
+    font-size: 3rem;
+  }
+}

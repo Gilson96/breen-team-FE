@@ -8,3 +8,9 @@
   gap: 2rem;
   padding-bottom: 8rem;
 }
+
+@media only screen and (max-width: 1000px) {
+  .games {
+    height: 100%;
+  }
+}
