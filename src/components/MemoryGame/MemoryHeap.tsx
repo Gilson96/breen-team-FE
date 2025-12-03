@@ -99,6 +99,17 @@ const MemoryHeap = () => {
       setGameOver(true);
       setPlayGame(false);
       resetValues();
+      return (
+        <Modal
+          onClose={() => {
+            setShowScoreSubmit(false), setPlayGame(false);
+          }}
+        >
+          <h2>Submit your score!</h2>
+          <h3>Finished in {timer} seconds!</h3>
+          <ScoreSubmitForm gameId={3} score={timer} />
+        </Modal>
+      );
     } else if (showScoreSubmit) {
       return (
         <Modal onClose={() => setShowScoreSubmit(false)}>
@@ -165,18 +176,8 @@ const MemoryHeap = () => {
             <p>Press restart game</p>
           </div>
         ) : (
-          <div className='card-container'>
-            {' '}
-            {gameOver ? (
-              <div className='flex items-center justify-center'>
-                <p>You out of flips</p>
-              </div>
-            ) : (
-              displayContent()
-            )}
-          </div>
+          <div className='card-container'>{displayContent()}</div>
         )}
-
         <div className='nav-bar'>
           <Nav theme='memoryHeap' hidden />
         </div>
