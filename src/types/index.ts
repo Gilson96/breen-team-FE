@@ -35,8 +35,15 @@ export type Game = {
 };
 
 export type User = {
-  avatar_url: string;
-  bio: string | null;
-  email: string;
-  username: string;
+  profile: {
+    avatar_url: string;
+    bio: string | null;
+    email: string;
+    username: string;
+  };
+  scores: {
+    '1'?: Score[];
+    '2'?: Score[];
+    '3'?: Score[];
+  };
 };
