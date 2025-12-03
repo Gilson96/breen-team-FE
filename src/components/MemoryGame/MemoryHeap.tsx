@@ -21,7 +21,7 @@ const MemoryHeap = () => {
   const [score, setScore] = useState(0);
   const [showScoreSubmit, setShowScoreSubmit] = useState(false);
   const [disabled, setDisabled] = useState(false);
-  const [flipCount, setFlipCount] = useState(20);
+  const [flipCount, setFlipCount] = useState(22);
   const [gameOver, setGameOver] = useState(false);
 
   const game = () => {
@@ -58,8 +58,8 @@ const MemoryHeap = () => {
     game();
     setRestartGame(false);
     setTimer(0);
-    setFlipCount(2);
-    setGameOver(false)
+    setFlipCount(22);
+    setGameOver(false);
   }, [restartGame]);
 
   useEffect(() => {
@@ -101,6 +101,8 @@ const MemoryHeap = () => {
   const displayContent = () => {
     if (flipCount === 0) {
       setGameOver(true);
+      setPlayGame(false);
+      resetValues();
     } else if (showScoreSubmit) {
       return (
         <Modal onClose={() => setShowScoreSubmit(false)}>
@@ -129,33 +131,55 @@ const MemoryHeap = () => {
           <h1 className='game-title'>Memory heap</h1>
           <p className='game-instructions'>Press play game to start</p>
           <div className='game-options'>
-            <button
-              className='game-button'
-              onClick={() => {
-                setPlayGame(true);
-              }}
-            >
-              Play game
-            </button>
-            <button
-              className='game-button'
-              onClick={() => {
-                setRestartGame(true);
-              }}
-            >
-              Restart game
-            </button>
-            <span className='game-timer'>
-              <p className='timer'>{flipCount}</p>
-              <p>flips</p>
-            </span>
-            <span className='game-timer'>
-              <p className='timer'>{timer}</p>
-              <Clock />
-            </span>
+            <div className='game-button'>
+              <button
+                className='game-button-play'
+                onClick={() => {
+                  setPlayGame(true);
+                }}
+              >
+                Play
+              </button>
+              <button
+                className='game-button-restart'
+                onClick={() => {
+                  setRestartGame(true);
+                  setPlayGame(true);
+                }}
+              >
+                Restart
+              </button>
+            </div>
+            <div className='game-score'>
+              <span className='game-timer'>
+                <p className='timer'>{flipCount}</p>
+                <p>flips</p>
+              </span>
+              <span className='game-timer'>
+                <p className='timer'>{timer}</p>
+                <Clock />
+              </span>
+            </div>
           </div>
         </div>
-        <div className='card-container'> {gameOver ? <p>Game over</p> : displayContent()}</div>
+        {gameOver ? (
+          <div className='game-over-container'>
+            <p>You out of flips</p>
+            <p>Press restart game</p>
+          </div>
+        ) : (
+          <div className='card-container'>
+            {' '}
+            {gameOver ? (
+              <div className='flex items-center justify-center'>
+                <p>You out of flips</p>
+              </div>
+            ) : (
+              displayContent()
+            )}
+          </div>
+        )}
+
         <div className='nav-bar'>
           <Nav theme='memoryHeap' hidden />
         </div>
