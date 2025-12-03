@@ -9,12 +9,13 @@ import './ScoreContextList.css';
 const ScoreContextList = () => {
   const { gameId, scoreId } = useParams();
 
-  const { isLoading, isError, data, error } = useQuery({
-    queryKey: ['games'],
-    queryFn: async () => getScoresByGameAndScoreId(Number(gameId), Number(scoreId))
+  const { isLoading, isError, data, error, isRefetching } = useQuery({
+    queryKey: ['scoreContext'],
+    queryFn: async () => getScoresByGameAndScoreId(Number(gameId), Number(scoreId)),
+    refetchOnMount: 'always'
   });
 
-  if (isLoading) {
+  if (isLoading || isRefetching) {
     return <Loading>Loading scores</Loading>;
   }
 
