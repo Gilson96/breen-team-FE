@@ -21,6 +21,8 @@ const MemoryHeap = () => {
   const [score, setScore] = useState(0);
   const [showScoreSubmit, setShowScoreSubmit] = useState(false);
   const [disabled, setDisabled] = useState(false);
+  const [flipCount, setFlipCount] = useState(20);
+  const [gameOver, setGameOver] = useState(false);
 
   const game = () => {
     const shuffleCards = arrayShuffle(cards);
@@ -31,13 +33,16 @@ const MemoryHeap = () => {
     setFirstFlip(null);
     setSecondFlip(null);
     setDisabled(false);
+    setTimer(0);
   };
 
   const handleFlip = (card: CardProps) => {
     if (firstFlip !== null) {
       setSecondFlip(card);
+      setFlipCount(prev => prev - 1);
     } else {
       setFirstFlip(card);
+      setFlipCount(prev => prev - 1);
     }
   };
 
@@ -53,6 +58,8 @@ const MemoryHeap = () => {
     game();
     setRestartGame(false);
     setTimer(0);
+    setFlipCount(2);
+    setGameOver(false)
   }, [restartGame]);
 
   useEffect(() => {
@@ -67,7 +74,7 @@ const MemoryHeap = () => {
       setTimer(0);
     }
 
-    if (firstFlip !== null || secondFlip !== null) {
+    if (firstFlip !== null && secondFlip !== null) {
       setDisabled(true);
       if (firstFlip?.src === secondFlip?.src) {
         setDeck(prev => {
@@ -91,56 +98,69 @@ const MemoryHeap = () => {
     return () => clearTimeout(flipCardBack);
   }, [firstFlip, secondFlip]);
 
+  const displayContent = () => {
+    if (flipCount === 0) {
+      setGameOver(true);
+    } else if (showScoreSubmit) {
+      return (
+        <Modal onClose={() => setShowScoreSubmit(false)}>
+          <h2>Submit your score!</h2>
+          <h3>Finished in {score} seconds!</h3>
+          <ScoreSubmitForm gameId={3} score={score} />
+        </Modal>
+      );
+    } else {
+      return deck.map(card => (
+        <Card
+          card={card}
+          handleFlip={handleFlip}
+          disabled={disabled}
+          playGame={playGame}
+          flipped={card === firstFlip || card === secondFlip || card.matched}
+        />
+      ));
+    }
+  };
+
   return (
-    <main className='game-container'>
-      <div className='game-header'>
-        <h1 className='game-title'>Memory heap</h1>
-        <div className='game-options'>
-          <button
-            className='game-button'
-            onClick={() => {
-              setPlayGame(true);
-            }}
-          >
-            Play game
-          </button>
-          <button
-            className='game-button'
-            onClick={() => {
-              setRestartGame(true);
-            }}
-          >
-            Restart game
-          </button>
-          <span className='game-timer'>
-            <p className='timer'>{timer}</p>
-            <Clock />
-          </span>
+    <>
+      <main className='game-container'>
+        <div className='game-header'>
+          <h1 className='game-title'>Memory heap</h1>
+          <p className='game-instructions'>Press play game to start</p>
+          <div className='game-options'>
+            <button
+              className='game-button'
+              onClick={() => {
+                setPlayGame(true);
+              }}
+            >
+              Play game
+            </button>
+            <button
+              className='game-button'
+              onClick={() => {
+                setRestartGame(true);
+              }}
+            >
+              Restart game
+            </button>
+            <span className='game-timer'>
+              <p className='timer'>{flipCount}</p>
+              <p>flips</p>
+            </span>
+            <span className='game-timer'>
+              <p className='timer'>{timer}</p>
+              <Clock />
+            </span>
+          </div>
         </div>
-      </div>
-      <div className='card-container'>
-        {showScoreSubmit ? (
-          <Modal onClose={() => setShowScoreSubmit(false)}>
-            <h2>Submit your score!</h2>
-            <h3>Finished in {score} seconds!</h3>
-            <ScoreSubmitForm gameId={3} score={score} />
-          </Modal>
-        ) : (
-          deck.map(card => (
-            <Card
-              card={card}
-              handleFlip={handleFlip}
-              disabled={disabled}
-              playGame={playGame}
-              flipped={card === firstFlip || card === secondFlip || card.matched}
-            />
-          ))
-        )}
-      </div>
-      <div className='nav-bar'>
-        <Nav />
-      </div>
-    </main>
+        <div className='card-container'> {gameOver ? <p>Game over</p> : displayContent()}</div>
+        <div className='nav-bar'>
+          <Nav theme='memoryHeap' hidden />
+        </div>
+      </main>
+    </>
   );
 };
 
