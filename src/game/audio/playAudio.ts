@@ -1,4 +1,4 @@
-import type { KaboomCtx } from "kaboom";
+import type { KaboomCtx } from 'kaboom';
 
 export function gameMusic(k: KaboomCtx) {
   return k.play('gameMusic', {
@@ -23,7 +23,6 @@ export function playRunningSound(k: KaboomCtx) {
     paused: false
   });
 }
-
 
 export function playcatchKnifeSound(k: KaboomCtx) {
   return k.play('catchKnifeSound', {
