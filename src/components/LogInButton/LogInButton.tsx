@@ -16,7 +16,7 @@ const LogInButton = () => {
     setAuthenticated(true);
 
     const { username, avatar_url } = data.user.profile;
-    console.log(data.user);
+
     return (
       <Link to='/profile' id='logInButton'>
         {username}

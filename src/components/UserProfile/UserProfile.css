@@ -10,19 +10,31 @@
   backdrop-filter: blur(4px);
   box-shadow: var(--block-shadow);
 
+  p {
+    width: 100%;
+  }
+
   .profileHeader {
     display: flex;
     width: 100%;
     align-items: center;
     justify-content: space-between;
-
+    align-items: flex-start;
+    padding-bottom: 2rem;
+    border-bottom: solid 0.25rem var(--snow-storm-dark);
     .avatar {
+      box-shadow: var(--block-shadow);
       border: solid 0.5rem var(--snow-storm-light);
       border-radius: 50%;
-      box-shadow: var(--block-shadow);
     }
-    h2 {
-      font-size: 3rem;
+
+    .headerDetails {
+      h2 {
+        font-size: 3rem;
+      }
+      span {
+        color: var(--polar-night-light);
+      }
     }
   }
 }
