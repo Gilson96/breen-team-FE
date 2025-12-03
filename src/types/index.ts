@@ -33,3 +33,10 @@ export type Game = {
   game_id: number;
   name: string;
 };
+
+export type User = {
+  avatar_url: string;
+  bio: string | null;
+  email: string;
+  username: string;
+};
