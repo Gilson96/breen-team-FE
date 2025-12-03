@@ -1,4 +1,4 @@
-import type { Score, Game } from '../types';
+import type { Score, Game, User } from '../types';
 
 const BASE_URL = 'https://breen-team-backend.vercel.app/api/';
 
@@ -35,5 +35,18 @@ export const submitScore = async (
 
 export const getGames = async (): Promise<{ games: Game[]; page: number }> => {
   const response = await fetch(`${BASE_URL}games`);
+  return response.json();
+};
+
+export const getUser = async (): Promise<{ user: User } | null> => {
+  const token = localStorage.getItem('token');
+
+  if (!token) return null;
+
+  const response = await fetch(`${BASE_URL}users/profile`, {
+    headers: {
+      Authorization: 'Bearer ' + localStorage.getItem('token')
+    }
+  });
   return response.json();
 };

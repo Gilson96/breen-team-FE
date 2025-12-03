@@ -13,9 +13,13 @@
   font-family: 'Jersey 25';
   font-size: 1.25rem;
 
-  svg {
+  svg,
+  img {
     width: 30px;
     height: 30px;
+  }
+  img {
+    border-radius: 50%;
   }
 
   &:hover {
