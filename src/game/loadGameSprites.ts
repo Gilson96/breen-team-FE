@@ -17,6 +17,7 @@ export function loadSprites(k: KaboomCtx) {
   k.loadSprite('gate', './gate.png');
   k.loadSprite('barricade', './barricade.png');
   k.loadSprite('middlegroundsStalactite', './middlegroundsStalactite.png');
+  k.loadSprite('pendulumBlade', './pendulumBlade.png');
 
   k.loadSprite('torch', './torch.png', {
     sliceX: 4,
@@ -33,13 +34,21 @@ export function loadSprites(k: KaboomCtx) {
 
   k.loadSprite('player', './orc.png', {
     sliceX: 4,
-    sliceY: 1,
+    sliceY: 2,
     anims: {
       run: {
         from: 0,
         to: 3,
         speed: 10,
         loop: true
+      },
+      jump:{
+        from: 4,
+        to:4
+      },
+      slide:{
+        from: 5,
+        to:5
       }
     }
   });
