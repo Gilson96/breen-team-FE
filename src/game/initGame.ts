@@ -17,9 +17,9 @@ export default function initGame(
 
   loadSprites(k);
   loadAudio(k);
-  mainMenu(k,state);
+  mainMenu(k, state);
   playGame(k, state);
-  gameOver(k, setScore,state)
+  gameOver(k, setScore, state);
 
   k.go('mainMenu');
 

@@ -1,4 +1,5 @@
 import type { AudioPlay, KaboomCtx, GameObj } from 'kaboom';
+import { grunt, jumpLanding } from './audio/playAudio';
 
 export function playerInputs(
   k: KaboomCtx,
@@ -8,12 +9,24 @@ export function playerInputs(
 ) {
   k.onClick(() => {
     if (player.isGrounded()) {
+      if (!state.isMuted) {
+        grunt(k);
+        k.wait(0.71, () => {
+          jumpLanding(k);
+        });
+      }
       player.jump(1500);
     }
   });
 
   k.onKeyPress('space', () => {
     if (player.isGrounded()) {
+      if (!state.isMuted) {
+        grunt(k);
+        k.wait(0.71, () => {
+          jumpLanding(k);
+        });
+      }
       player.jump(1500);
     }
   });
@@ -21,7 +34,6 @@ export function playerInputs(
   k.onUpdate(() => {
     const grounded = player.isGrounded();
     const muted = state.isMuted;
-    console.log(muted);
 
     if (grounded && !muted) {
       if (running.paused) {

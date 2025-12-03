@@ -1,6 +1,6 @@
 import type { KaboomCtx } from 'kaboom';
 
-import { playMusic, playRunningSound } from '../audio/playAudio.ts';
+import { gameMusic, playRunningSound } from '../audio/playAudio.ts';
 
 import { spawnPlayer } from '../spawnObjects/spawnPlayer.ts';
 import { playerInputs } from '../playerInputs.ts';
@@ -17,7 +17,7 @@ import { muteButton } from '../muteButton.ts';
 
 export function playGame(k: KaboomCtx, state: { isMuted: boolean }) {
   k.scene('game', () => {
-    const music = playMusic(k);
+    const music = gameMusic(k);
     const running = playRunningSound(k);
 
     if (state.isMuted) {
@@ -43,7 +43,7 @@ export function playGame(k: KaboomCtx, state: { isMuted: boolean }) {
     const player = spawnPlayer(k);
 
     playerInputs(k, player, running, state);
-    playerCollision(k, player, scoreLabel, music, running,state);
+    playerCollision(k, player, scoreLabel, music, running, state);
 
     floorColision(k);
     floorAnim(k);

@@ -1,4 +1,4 @@
-import type { KaboomCtx, Vec2 } from 'kaboom';
+import type { KaboomCtx, Vec2, AudioPlay } from 'kaboom';
 import { playbuttonClick } from './audio/playAudio';
 
 export function button(
@@ -6,7 +6,8 @@ export function button(
   txt: string,
   p: Vec2,
   goTo: string,
-  state: { isMuted: boolean }
+  state: { isMuted: boolean },
+  music?: AudioPlay
 ) {
   const btn = k.add([k.sprite('buttonImage'), k.pos(p), k.area(), k.scale(2), k.anchor('center')]);
 
@@ -14,6 +15,7 @@ export function button(
 
   btn.onClick(() => {
     if (!state.isMuted) playbuttonClick(k);
+    if (music) music.paused = true;
     k.go(goTo);
   });
   return btn;
