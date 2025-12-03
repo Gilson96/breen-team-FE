@@ -9,7 +9,7 @@ const HomePage = () => {
         <Orc />
         <h1>
           <span>Burnout</span>
-          <span>Break</span>
+          <span>Breaker</span>
         </h1>
       </div>
       <HomeButton to='/games' animate>
