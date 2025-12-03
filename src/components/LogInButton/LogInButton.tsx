@@ -11,8 +11,8 @@ const LogInButton = () => {
     queryKey: ['auth'],
     queryFn: getUser
   });
-
-  if (!isPending && data && data.user) {
+  
+   if (!isPending && data && data.user) {
     setAuthenticated(true);
 
     const { username, avatar_url } = data.user.profile;
@@ -24,7 +24,7 @@ const LogInButton = () => {
       </Link>
     );
   }
-
+  
   if (!isPending && !data) {
     return (
       <Link to='https://breen-team-backend.vercel.app/api/auth/google' id='logInButton'>
@@ -62,5 +62,6 @@ const LogInButton = () => {
     );
   }
 };
+ 
 
 export default LogInButton;

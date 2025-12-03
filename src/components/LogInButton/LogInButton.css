@@ -31,3 +31,19 @@
     box-shadow: none;
   }
 }
+
+@media only screen and (max-width: 1000px) {
+  #logInButton {
+    position: absolute;
+    top: 0.5rem;
+  }
+
+  #logInButton > p {
+    display: none;
+  }
+
+  #logInButton > svg {
+    width: 20px;
+    height: 20px;
+  }
+}
