@@ -14,11 +14,12 @@ export default function initGame(
   const k = initKaboom(gameRef);
 
   const state = { isMuted: false };
+  const isMobile = 'ontouchstart' in window || navigator.maxTouchPoints > 0;
 
   loadSprites(k);
   loadAudio(k);
-  mainMenu(k, state);
-  playGame(k, state);
+  mainMenu(k, state, isMobile);
+  playGame(k, state, isMobile);
   gameOver(k, setScore, state);
 
   k.go('mainMenu');
