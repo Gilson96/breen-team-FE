@@ -50,3 +50,25 @@ export const getUser = async (): Promise<{ user: User } | null> => {
   });
   return response.json();
 };
+
+export const updateUser = async ({
+  username,
+  bio
+}: {
+  username: string;
+  bio: string;
+}): Promise<{ user: User } | null> => {
+  const token = localStorage.getItem('token');
+
+  if (!token) return null;
+
+  const response = await fetch(`${BASE_URL}users/profile`, {
+    method: 'PATCH',
+    headers: {
+      Authorization: 'Bearer ' + localStorage.getItem('token'),
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify({ username, bio })
+  });
+  return response.json();
+};

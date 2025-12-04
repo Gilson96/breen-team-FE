@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
-import { useQuery } from '@tanstack/react-query';
+import { useQuery, useMutation } from '@tanstack/react-query';
 import useAuthContext from '../../hooks/useAuthContext';
-import { getUser } from '../../api';
+import { getUser, updateUser } from '../../api';
 import Loading from '../Loading/Loading';
 import Error from '../Error/Error';
 import './UserProfile.css';
@@ -24,15 +24,19 @@ const UserProfile = () => {
     queryFn: getUser
   });
 
+  const { mutate } = useMutation({
+    mutationFn: (updatedUser: { username: string; bio: string }) => updateUser(updatedUser)
+  });
+
   useEffect(() => {
     const debounce = setTimeout(() => {
       const updatedName = usernameTouched ? usernameText : data?.user.profile.username;
       const updatedBio = bioTouched ? bioText : data?.user.profile.bio;
-      console.log(updatedName, updatedBio);
-    }, 1000);
+      mutate({ username: updatedName || '', bio: updatedBio || '' });
+    }, 500);
 
     return () => clearInterval(debounce);
-  }, [bioText, bioTouched, usernameText, usernameTouched, data]);
+  }, [bioText, bioTouched, usernameText, usernameTouched, data, mutate]);
 
   if (!authenticated && data === null) {
     return (
@@ -83,7 +87,6 @@ const UserProfile = () => {
             <span>{email}</span>
           </div>
         </div>
-        {bioText}
         <h3>Bio</h3>
         {showEditBio ? (
           <ProfileTextArea
@@ -102,8 +105,6 @@ const UserProfile = () => {
             <Edit className='editIcon' />
           </p>
         )}
-        {usernameText}
-        {bioText}
       </main>
     );
   }
