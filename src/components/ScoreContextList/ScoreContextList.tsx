@@ -25,7 +25,7 @@ const ScoreContextList = () => {
 
   return (
     <>
-      <ul className='scoreList'>
+      <ul className='scoreContextList'>
         {data!.scores.map(score => {
           return (
             <ScoreRow

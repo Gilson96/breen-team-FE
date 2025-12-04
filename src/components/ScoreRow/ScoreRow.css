@@ -15,7 +15,7 @@
   }
 
   .scoreRow__rank {
-    width: 3rem;
+    width: 4rem;
   }
   .scoreRow__username {
     flex: 1 1 0px;
@@ -26,10 +26,8 @@
 }
 
 @media only screen and (max-width: 400px) {
-
   .scoreRow {
-    width: 12rem;  
-    gap: 2px; 
+    width: 14rem;
+    gap: 2px;
   }
- 
 }
