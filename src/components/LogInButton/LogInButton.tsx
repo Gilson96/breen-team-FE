@@ -22,7 +22,7 @@ const LogInButton = () => {
 
     return (
       <Link to='/profile' id='logInButton'>
-        {username}
+        <p>{username}</p>
         <img src={avatar_url} alt={username} />
       </Link>
     );
