@@ -71,6 +71,9 @@
       span {
         color: var(--polar-night-light);
       }
+      .nameError {
+        color: var(--aurora-red);
+      }
     }
   }
   .logOut {
