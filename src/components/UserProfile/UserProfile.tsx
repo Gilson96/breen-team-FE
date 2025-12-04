@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import { useQuery, useMutation } from '@tanstack/react-query';
+import { useNavigate } from 'react-router';
 import useAuthContext from '../../hooks/useAuthContext';
 import { getUser, updateUser } from '../../api';
 import Loading from '../Loading/Loading';
@@ -10,7 +11,7 @@ import ProfileTextArea from '../ProfileTextArea/ProfileTextArea';
 import { Edit } from '@nsmr/pixelart-react';
 
 const UserProfile = () => {
-  const { authenticated } = useAuthContext();
+  const { authenticated, setAuthenticated } = useAuthContext();
 
   const [usernameText, setUsernameText] = useState('');
   const [showEditUsername, setShowEditUsername] = useState(false);
@@ -28,6 +29,8 @@ const UserProfile = () => {
     mutationFn: (updatedUser: { username: string; bio: string }) => updateUser(updatedUser)
   });
 
+  const navigate = useNavigate();
+
   useEffect(() => {
     const debounce = setTimeout(() => {
       const updatedName = usernameTouched ? usernameText : data?.user.profile.username;
@@ -38,7 +41,27 @@ const UserProfile = () => {
     return () => clearInterval(debounce);
   }, [bioText, bioTouched, usernameText, usernameTouched, data, mutate]);
 
-  const handleLogOut = () => {};
+  const handleLogOut = () => {
+    localStorage.removeItem('token');
+    setAuthenticated(false);
+    navigate('/');
+  };
+
+  if (isError) {
+    return (
+      <main className='userProfile'>
+        <Error>{error.message}</Error>
+      </main>
+    );
+  }
+
+  if (isLoading) {
+    return (
+      <main className='userProfile'>
+        <Loading>Loading user profile</Loading>
+      </main>
+    );
+  }
 
   if (!authenticated && data === null) {
     return (
@@ -46,18 +69,6 @@ const UserProfile = () => {
         <h1>Please log in to see your profile</h1>
       </main>
     );
-  }
-
-  if (isError) {
-    <main className='userProfile'>
-      <Error>{error.message}</Error>
-    </main>;
-  }
-
-  if (isLoading) {
-    <main className='userProfile'>
-      <Loading>Loading user profile</Loading>
-    </main>;
   }
 
   if (data) {
