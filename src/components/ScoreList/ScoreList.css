@@ -10,3 +10,10 @@
   backdrop-filter: blur(4px);
   box-shadow: var(--block-shadow);
 }
+
+@media only screen and (max-width: 1000px) {
+  .scoreList {
+    width: 100%;
+  }
+
+}
