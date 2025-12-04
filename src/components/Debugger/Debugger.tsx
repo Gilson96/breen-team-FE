@@ -156,8 +156,16 @@ const Minesweeper = () => {
           style={{ gridTemplateColumns: `repeat(${dimensions[0]}, 1fr)` }}
           onContextMenu={e => e.preventDefault()}
         >
-          {gameOver && <h3 className='gameOver lose'>You lose!</h3>}
-          {complete && <h3 className='gameOver win'>You win!</h3>}
+          {gameOver && (
+            <div className='gameOver lose'>
+              <span>You lose!</span>
+            </div>
+          )}
+          {complete && (
+            <div className='gameOver win'>
+              <span>You win!</span>
+            </div>
+          )}
           {grid.map(row =>
             row.map((cell: DebuggerCellData) => (
               <MinesweeperCell
@@ -182,6 +190,8 @@ const Minesweeper = () => {
       </main>
       <div id='stars1'></div>
       <div id='stars2'></div>
+      <div id='stars3'></div>
+      <div id='stars4'></div>
     </div>
   );
 };
