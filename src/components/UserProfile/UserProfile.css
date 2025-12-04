@@ -73,4 +73,20 @@
       }
     }
   }
+  .logOut {
+    background-color: var(--aurora-red);
+    color: var(--snow-storm-light);
+    padding: 0.4rem 1rem;
+    border: none;
+    outline: none;
+    box-shadow: var(--block-shadow);
+    cursor: pointer;
+
+    &:active {
+      box-shadow: none;
+      position: relative;
+      top: 5px;
+      left: 5px;
+    }
+  }
 }
