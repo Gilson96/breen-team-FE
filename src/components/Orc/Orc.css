@@ -6,7 +6,7 @@
 #orc {
   width: 320px;
   height: 320px;
-  background-image: url('/orc.png');
+  background-image: url('/homeOrc.png');
   animation: orcRun 0.5s steps(3, end) infinite;
   background-size: cover;
 }

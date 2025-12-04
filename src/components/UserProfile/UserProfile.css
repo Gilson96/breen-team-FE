@@ -10,19 +10,67 @@
   backdrop-filter: blur(4px);
   box-shadow: var(--block-shadow);
 
+  h3 {
+    font-size: 3rem;
+    padding: 1rem 0 0;
+    width: 100%;
+  }
+  .editIcon {
+    position: absolute;
+    top: -20px;
+    right: -20px;
+    opacity: 0;
+  }
+  p {
+    width: 100%;
+    cursor: pointer;
+    position: relative;
+
+    &:hover {
+      background-color: var(--snow-storm-dark);
+
+      & > .editIcon {
+        opacity: 1;
+      }
+    }
+  }
+
   .profileHeader {
     display: flex;
     width: 100%;
     align-items: center;
     justify-content: space-between;
-
+    padding-bottom: 2rem;
+    border-bottom: solid 0.25rem var(--snow-storm-dark);
     .avatar {
+      box-shadow: var(--block-shadow);
       border: solid 0.5rem var(--snow-storm-light);
       border-radius: 50%;
-      box-shadow: var(--block-shadow);
+      width: 100px;
+      height: 100px;
     }
-    h2 {
-      font-size: 3rem;
+
+    .headerDetails {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-end;
+      flex-grow: 0;
+      .username {
+        font-size: 3rem;
+        cursor: pointer;
+        position: relative;
+
+        &:hover {
+          background-color: var(--snow-storm-dark);
+
+          & > .editIcon {
+            opacity: 1;
+          }
+        }
+      }
+      span {
+        color: var(--polar-night-light);
+      }
     }
   }
 }

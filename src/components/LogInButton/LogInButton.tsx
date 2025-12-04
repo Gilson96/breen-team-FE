@@ -16,7 +16,7 @@ const LogInButton = () => {
     setAuthenticated(true);
 
     const { username, avatar_url } = data.user.profile;
-    console.log(data.user);
+
     return (
       <Link to='/profile' id='logInButton'>
         {username}
@@ -27,8 +27,8 @@ const LogInButton = () => {
   
   if (!isPending && !data) {
     return (
-      <Link to='https://breen-team-backend.vercel.app/api/auth/google' id='logInButton'>
-        {/* <Link to='http://localhost:4000/api/auth/google' id='logInButton'> */}
+      // <Link to='https://breen-team-backend.vercel.app/api/auth/google' id='logInButton'>
+      <Link to='http://localhost:4000/api/auth/google' id='logInButton'>
         <svg
           width='800px'
           height='800px'
