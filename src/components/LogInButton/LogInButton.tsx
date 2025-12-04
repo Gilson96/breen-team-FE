@@ -28,10 +28,10 @@ const LogInButton = () => {
     );
   }
 
-  if (!authenticated) {
+  if (!authenticated && !isPending) {
     return (
-      <Link to='https://breen-team-backend.vercel.app/api/auth/google' id='logInButton'>
-        {/* <Link to='http://localhost:4000/api/auth/google' id='logInButton'> */}
+      // <Link to='https://breen-team-backend.vercel.app/api/auth/google' id='logInButton'>
+      <Link to='http://localhost:4000/api/auth/google' id='logInButton'>
         <svg
           width='800px'
           height='800px'
