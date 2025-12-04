@@ -57,7 +57,7 @@ export const updateUser = async ({
 }: {
   username: string;
   bio: string;
-}): Promise<{ user: User } | null> => {
+}): Promise<{ user: User } | { error: string; message: string } | null> => {
   const token = localStorage.getItem('token');
 
   if (!token) return null;

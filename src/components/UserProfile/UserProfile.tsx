@@ -25,7 +25,7 @@ const UserProfile = () => {
     queryFn: getUser
   });
 
-  const { mutate } = useMutation({
+  const { data: mutationData, mutate } = useMutation({
     mutationFn: (updatedUser: { username: string; bio: string }) => updateUser(updatedUser)
   });
 
@@ -96,6 +96,9 @@ const UserProfile = () => {
                 {usernameTouched ? usernameText : username}
                 <Edit className='editIcon' />
               </h2>
+            )}
+            {mutationData && 'message' in mutationData && mutationData.error === 'CustomError' && (
+              <span className='nameError'>{mutationData.message}</span>
             )}
             <span>{email}</span>
           </div>
