@@ -32,8 +32,12 @@ const ScoreSubmitForm = ({ gameId, score }: ScoreSubmitFormProps) => {
   });
 
   const { isPending, isError, isSuccess, data, mutate } = useMutation({
-    mutationFn: () =>
-      submitScore(gameId, `${initials.first}${initials.second}${initials.third}`, score)
+    mutationFn: () => {
+      if (authenticated && userData?.user.profile.username) {
+        return submitScore(gameId, userData?.user.profile.username, score);
+      }
+      return submitScore(gameId, `${initials.first}${initials.second}${initials.third}`, score);
+    }
   });
 
   const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
@@ -48,8 +52,12 @@ const ScoreSubmitForm = ({ gameId, score }: ScoreSubmitFormProps) => {
 
   const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    setValidate(true);
-    if (isValid) mutate();
+    if (authenticated) {
+      mutate();
+    } else {
+      setValidate(true);
+      if (isValid) mutate();
+    }
   };
 
   if (isSuccess) {
@@ -112,7 +120,9 @@ const ScoreSubmitForm = ({ gameId, score }: ScoreSubmitFormProps) => {
         </>
       )}
       {isError && <span>Error submitting score</span>}
-      <Button disabled={isPending}>{isPending ? 'Submitting score' : 'Submit Score'}</Button>
+      {!isLoadingUser && (
+        <Button disabled={isPending}>{isPending ? 'Submitting score' : 'Submit Score'}</Button>
+      )}
     </form>
   );
 };

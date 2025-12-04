@@ -8,17 +8,23 @@ import { useEffect } from 'react';
 const LogInButton = () => {
   const { authenticated, setAuthenticated } = useAuthContext();
 
+  console.log(authenticated);
+
   const { isPending, data } = useQuery({
     queryKey: ['auth'],
     queryFn: getUser
   });
 
   useEffect(() => {
-    if (!isPending && data && data.user) setAuthenticated(true);
+    if (!isPending && data && data.user) {
+      setAuthenticated(true);
+    } else {
+      setAuthenticated(false);
+    }
   }, [isPending, data, setAuthenticated]);
 
-  if (authenticated) {
-    const { username, avatar_url } = data!.user.profile;
+  if (authenticated && !isPending && data) {
+    const { username, avatar_url } = data.user.profile;
 
     return (
       <Link to='/profile' id='logInButton'>
@@ -30,8 +36,8 @@ const LogInButton = () => {
 
   if (!authenticated && !isPending) {
     return (
-      // <Link to='https://breen-team-backend.vercel.app/api/auth/google' id='logInButton'>
-      <Link to='http://localhost:4000/api/auth/google' id='logInButton'>
+      <Link to='https://breen-team-backend.vercel.app/api/auth/google' id='logInButton'>
+        {/* <Link to='http://localhost:4000/api/auth/google' id='logInButton'> */}
         <svg
           width='800px'
           height='800px'
