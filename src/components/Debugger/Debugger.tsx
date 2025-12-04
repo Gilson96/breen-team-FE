@@ -123,62 +123,66 @@ const Minesweeper = () => {
   };
 
   return (
-    <main className='minesweeper'>
-      <div className='minesweeper__title'>
-        <h1>Debugger</h1>
-        {/* <button onClick={() => setShowSettings(true)}>
+    <div className='minesweeperWrapper'>
+      <main className='minesweeper'>
+        <div className='minesweeper__title'>
+          <h1>Debugger</h1>
+          {/* <button onClick={() => setShowSettings(true)}>
           <Sliders2 />
-        </button> */}
-        {showSettings && (
-          <Modal onClose={() => setShowSettings(false)}>
-            <h2>Difficulty</h2>
-            <Button onClick={() => handleChangeSettings(9, 9, 'easy')}>Easy</Button>
-            <Button onClick={() => handleChangeSettings(16, 16, 'intermediate')}>
-              Intermediate
-            </Button>
-            <Button onClick={() => handleChangeSettings(16, 30, 'expert')}>Expert</Button>
+          </button> */}
+          {showSettings && (
+            <Modal onClose={() => setShowSettings(false)}>
+              <h2>Difficulty</h2>
+              <Button onClick={() => handleChangeSettings(9, 9, 'easy')}>Easy</Button>
+              <Button onClick={() => handleChangeSettings(16, 16, 'intermediate')}>
+                Intermediate
+              </Button>
+              <Button onClick={() => handleChangeSettings(16, 30, 'expert')}>Expert</Button>
+            </Modal>
+          )}
+        </div>
+        <div className='minesweeper__details'>
+          <span>
+            <Flag />
+            {flags}
+          </span>
+          <span>
+            {time}
+            <Clock />
+          </span>
+        </div>
+        <div
+          className='minesweeper__container'
+          style={{ gridTemplateColumns: `repeat(${dimensions[0]}, 1fr)` }}
+          onContextMenu={e => e.preventDefault()}
+        >
+          {gameOver && <h3 className='gameOver lose'>You lose!</h3>}
+          {complete && <h3 className='gameOver win'>You win!</h3>}
+          {grid.map(row =>
+            row.map((cell: DebuggerCellData) => (
+              <MinesweeperCell
+                cell={cell}
+                key={cell.id}
+                leftClickHandler={handleLeftClick}
+                rightClickHandler={handleRightClick}
+              />
+            ))
+          )}
+        </div>
+        {(gameOver || complete) && <Button onClick={handleGameReset}>Reset grid</Button>}
+        {complete && <Button onClick={() => setShowScoreSubmit(true)}>Submit Score</Button>}
+        {showScoreSubmit && (
+          <Modal onClose={() => setShowScoreSubmit(false)}>
+            <h3>Finished in {time} seconds!</h3>
+            <p>Difficulty: {difficulty}</p>
+            <ScoreSubmitForm gameId={2} score={time} />
           </Modal>
         )}
-      </div>
-      <div className='minesweeper__details'>
-        <span>
-          <Flag />
-          {flags}
-        </span>
-        <span>
-          <Clock />
-          {time}
-        </span>
-      </div>
-      <div
-        className='minesweeper__container'
-        style={{ gridTemplateColumns: `repeat(${dimensions[0]}, 1fr)` }}
-        onContextMenu={e => e.preventDefault()}
-      >
-        {gameOver && <h3 className='gameOver lose'>You lose!</h3>}
-        {complete && <h3 className='gameOver win'>You win!</h3>}
-        {grid.map(row =>
-          row.map((cell: DebuggerCellData) => (
-            <MinesweeperCell
-              cell={cell}
-              key={cell.id}
-              leftClickHandler={handleLeftClick}
-              rightClickHandler={handleRightClick}
-            />
-          ))
-        )}
-      </div>
-      {(gameOver || complete) && <Button onClick={handleGameReset}>Reset grid</Button>}
-      {complete && <Button onClick={() => setShowScoreSubmit(true)}>Submit Score</Button>}
-      {showScoreSubmit && (
-        <Modal onClose={() => setShowScoreSubmit(false)}>
-          <h3>Finished in {time} seconds!</h3>
-          <p>Difficulty: {difficulty}</p>
-          <ScoreSubmitForm gameId={2} score={time} />
-        </Modal>
-      )}
-      <Nav theme='debugger' hidden />
-    </main>
+        <Nav theme='debugger' hidden />
+      </main>
+      <div id='stars1'></div>
+      <div id='stars2'></div>
+    </div>
   );
 };
 
