@@ -14,8 +14,9 @@ import { backgroundAnim } from '../backgroundAnim.ts';
 import { spawnMiddlegroundProps } from '../spawnObjects/spawnMiddlegroundProps.ts';
 import { spawnBackgroundProps } from '../spawnObjects/spawnBackgroundProps.ts';
 import { muteButton } from '../muteButton.ts';
+import { mobileJumpButtons,mobileMuteButton,mobileSlideButtons } from '../mobileButtons.ts';
 
-export function playGame(k: KaboomCtx, state: { isMuted: boolean }) {
+export function playGame(k: KaboomCtx, state: { isMuted: boolean },isMobile:boolean) {
   k.scene('game', () => {
     const music = gameMusic(k);
     const running = playRunningSound(k);
@@ -51,5 +52,13 @@ export function playGame(k: KaboomCtx, state: { isMuted: boolean }) {
     spawnKnives(k);
     spawnMiddlegroundProps(k);
     spawnBackgroundProps(k);
+
+    if (isMobile) {
+      console.log('Mobile detected');
+      mobileJumpButtons(k, player, state);
+      mobileSlideButtons(k, player, state);
+      mobileMuteButton(k, { music }, state)
+
+    }
   });
 }

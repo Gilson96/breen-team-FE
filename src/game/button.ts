@@ -18,5 +18,4 @@ export function button(
     if (music) music.paused = true;
     k.go(goTo);
   });
-  return btn;
 }
