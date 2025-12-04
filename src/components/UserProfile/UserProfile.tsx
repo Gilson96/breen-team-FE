@@ -38,6 +38,8 @@ const UserProfile = () => {
     return () => clearInterval(debounce);
   }, [bioText, bioTouched, usernameText, usernameTouched, data, mutate]);
 
+  const handleLogOut = () => {};
+
   if (!authenticated && data === null) {
     return (
       <main className='userProfile'>
@@ -105,6 +107,9 @@ const UserProfile = () => {
             <Edit className='editIcon' />
           </p>
         )}
+        <button onClick={handleLogOut} className='logOut'>
+          Log out
+        </button>
       </main>
     );
   }

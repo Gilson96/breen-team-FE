@@ -3,19 +3,22 @@ import { Link } from 'react-router';
 import useAuthContext from '../../hooks/useAuthContext';
 import { getUser } from '../../api';
 import './LogInButton.css';
+import { useEffect } from 'react';
 
 const LogInButton = () => {
-  const { setAuthenticated } = useAuthContext();
+  const { authenticated, setAuthenticated } = useAuthContext();
 
   const { isPending, data } = useQuery({
     queryKey: ['auth'],
     queryFn: getUser
   });
 
-  if (!isPending && data && data.user) {
-    setAuthenticated(true);
+  useEffect(() => {
+    if (!isPending && data && data.user) setAuthenticated(true);
+  }, [isPending, data, setAuthenticated]);
 
-    const { username, avatar_url } = data.user.profile;
+  if (authenticated) {
+    const { username, avatar_url } = data!.user.profile;
 
     return (
       <Link to='/profile' id='logInButton'>
