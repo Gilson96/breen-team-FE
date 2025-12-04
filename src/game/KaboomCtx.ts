@@ -7,12 +7,11 @@ export default function initKaboom(gameRef: RefObject<HTMLCanvasElement>) {
     height: 720,
     letterbox: true,
     global: false,
-    debug: true, // TODO: put back to false
+    debug: false,
     canvas: gameRef.current,
     pixelDensity: devicePixelRatio,
     crisp: true,
     maxFPS: 60,
     backgroundAudio: true
-    
   });
 }
