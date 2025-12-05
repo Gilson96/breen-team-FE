@@ -6,7 +6,13 @@ import Modal from '../Modal/Modal';
 import MinesweeperCell from '../DebuggerCell/DebuggerCell';
 import Button from '../Button/Button';
 import ScoreSubmitForm from '../ScoreSubmitForm/ScoreSubmitForm';
-import { calculateBugs, createGrid, revealBugs, revealGridRecursively } from './functions';
+import {
+  calculateBugs,
+  createGrid,
+  revealBugs,
+  revealGridRecursively,
+  generateRandomShadows
+} from './functions';
 import type { DebuggerCellData } from '../../types';
 import './Debugger.css';
 
@@ -122,6 +128,9 @@ const Minesweeper = () => {
     handleGameReset(x, y);
   };
 
+  const distantStars = generateRandomShadows(100);
+  const closeStars = generateRandomShadows(30);
+
   return (
     <div className='minesweeperWrapper'>
       <main className='minesweeper'>
@@ -188,10 +197,10 @@ const Minesweeper = () => {
         )}
         <Nav theme='debugger' hidden />
       </main>
-      <div id='stars1'></div>
-      <div id='stars2'></div>
-      <div id='stars3'></div>
-      <div id='stars4'></div>
+      <div id='stars2' style={{ boxShadow: distantStars }}></div>
+      <div id='stars1' style={{ boxShadow: distantStars }}></div>
+      <div id='stars3' style={{ boxShadow: closeStars }}></div>
+      <div id='stars4' style={{ boxShadow: closeStars }}></div>
     </div>
   );
 };

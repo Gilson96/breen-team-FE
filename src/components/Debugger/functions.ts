@@ -96,3 +96,15 @@ export const revealBugs = (grid: DebuggerCellData[][]) => {
 
   return newGrid;
 };
+
+export const generateRandomShadows = (num: number) => {
+  let shadow = '';
+
+  for (let i = 0; i < num; i++) {
+    const width = Math.floor(Math.random() * 100);
+    const height = Math.floor(Math.random() * 100);
+    shadow += `${width}vw ${height}vh #fff, `;
+  }
+
+  return shadow.slice(0, -2);
+};
