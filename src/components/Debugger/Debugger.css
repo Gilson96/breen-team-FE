@@ -23,7 +23,7 @@
     position: relative;
     padding: 2rem 0;
     z-index: 1;
-    overflow: hidden;
+    overflow: visible;
 
     .minesweeper__title {
       color: var(--snow-storm-dark);
