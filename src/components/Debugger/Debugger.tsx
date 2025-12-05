@@ -1,4 +1,4 @@
-import { useState, type SyntheticEvent } from 'react';
+import { useMemo, useState, type SyntheticEvent } from 'react';
 import { useInterval } from 'usehooks-ts';
 import { Flag, Clock } from '@nsmr/pixelart-react';
 import Nav from '../Nav/Nav';
@@ -128,8 +128,8 @@ const Minesweeper = () => {
     handleGameReset(x, y);
   };
 
-  const distantStars = generateRandomShadows(100);
-  const closeStars = generateRandomShadows(30);
+  const distantStars = useMemo(() => generateRandomShadows(100), []);
+  const closeStars = useMemo(() => generateRandomShadows(30), []);
 
   return (
     <div className='minesweeperWrapper'>
