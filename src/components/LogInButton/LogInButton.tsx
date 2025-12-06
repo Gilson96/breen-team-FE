@@ -8,8 +8,6 @@ import { useEffect } from 'react';
 const LogInButton = () => {
   const { authenticated, setAuthenticated } = useAuthContext();
 
-  console.log(authenticated);
-
   const { isPending, data } = useQuery({
     queryKey: ['auth'],
     queryFn: getUser
