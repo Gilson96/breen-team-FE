@@ -1,14 +1,14 @@
 import { useState, useEffect } from 'react';
 import { useQuery, useMutation } from '@tanstack/react-query';
 import { useNavigate } from 'react-router';
+import { Edit } from '@nsmr/pixelart-react';
 import useAuthContext from '../../hooks/useAuthContext';
 import { getUser, updateUser } from '../../api';
 import Loading from '../Loading/Loading';
 import Error from '../Error/Error';
-import './UserProfile.css';
 import ProfileTextInput from '../ProfileTextInput/ProfileTextInput';
 import ProfileTextArea from '../ProfileTextArea/ProfileTextArea';
-import { Edit } from '@nsmr/pixelart-react';
+import './UserProfile.css';
 
 const UserProfile = () => {
   const { authenticated, setAuthenticated } = useAuthContext();
