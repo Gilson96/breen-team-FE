@@ -1,9 +1,9 @@
+import { useEffect } from 'react';
 import { useQuery } from '@tanstack/react-query';
 import { Link } from 'react-router';
 import useAuthContext from '../../hooks/useAuthContext';
 import { getUser } from '../../api';
 import './LogInButton.css';
-import { useEffect } from 'react';
 
 const LogInButton = () => {
   const { authenticated, setAuthenticated } = useAuthContext();
