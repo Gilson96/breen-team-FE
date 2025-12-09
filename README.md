@@ -13,7 +13,7 @@ Games available:
   ![orc-of-the-rings](/public/readme/OrcOfTheRings.png)
 
 - Debugger \
-  ![debugger](/public/readme/Debugger.png)
+  ![debugger](/public/readme/debugger.png)
 
 - Memory Heap \
   ![memory-heap](/public/readme/memoryHeap.png)
