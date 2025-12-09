@@ -10,10 +10,10 @@ Here is a game platform app project. \
 Games available:
 
 - Orc of the Rings \
-  ![orc-of-the-rings](/public/readme/orcOfTheRings.png)
+  ![orc-of-the-rings](/public/readme/OrcOfTheRings.png)
 
 - Debugger \
-  ![debugger](/public/readme/debugger.png)
+  ![debugger](/public/readme/Debugger.png)
 
 - Memory Heap \
   ![memory-heap](/public/readme/memoryHeap.png)
