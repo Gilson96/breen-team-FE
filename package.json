@@ -18,9 +18,9 @@
     "kaboom": "^3000.1.17",
     "kaplay": "^4000.0.0-alpha.10",
     "motion": "^12.23.24",
-    "react": "^19.2.0",
-    "react-dom": "^19.2.0",
-    "react-router": "^7.9.6",
+    "react": "^19.2.1",
+    "react-dom": "^19.2.1",
+    "react-router": "^7.10.1",
     "usehooks-ts": "^3.1.1"
   },
   "devDependencies": {
